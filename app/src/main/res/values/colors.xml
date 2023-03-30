@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- LoginActivity -->
+    <color name="login_back">#DADADA</color>
+    <color name="login_text">#00A8DC</color>
 </resources>
