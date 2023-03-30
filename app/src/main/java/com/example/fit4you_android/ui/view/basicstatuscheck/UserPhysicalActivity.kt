@@ -1,7 +1,8 @@
-package com.example.fit4you_android
+package com.example.fit4you_android.ui.view.basicstatuscheck
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.fit4you_android.R
 
 class UserPhysicalActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
