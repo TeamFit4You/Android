@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Fit4You-Android</string>
+    <string name="next">다음</string>
+    <string name="prev">뒤로가기</string>
+    <string name="end_exercise">운동 마치기</string>
 
     <!-- Sign In -->
     <string name="sign_in">LOGIN</string>
@@ -19,4 +22,11 @@
     <string name="sign_up_email">이메일</string>
     <string name="sign_up_join">가입하기</string>
     <string name="sign_up_nick_name">닉네임</string>
+
+    <!-- User Physical Activity -->
+    <string name="user_physical_request">키와 몸무게를 입력해주세요.</string>
+    <string name="user_height">키</string>
+    <string name="user_weight">몸무게</string>
+    <string name="height_cm">cm</string>
+    <string name="weight_kg">kg</string>
 </resources>
