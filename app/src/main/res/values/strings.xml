@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Fit4You-Android</string>
+    <string name="app_name">Fit4You</string>
     <string name="next">다음</string>
     <string name="prev">뒤로가기</string>
     <string name="end_exercise">운동 마치기</string>
