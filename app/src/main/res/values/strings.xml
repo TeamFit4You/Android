@@ -29,4 +29,15 @@
     <string name="user_weight">몸무게</string>
     <string name="height_cm">cm</string>
     <string name="weight_kg">kg</string>
+
+    <!-- Main Activity -->
+    <string name="main_today">오늘의 운동</string>
+    <string name="main_recom">추천 운동</string>
+    <string name="main_record">운동 기록</string>
+    <string name="main_challenge">챌린지</string>
+    <string name="main_board">게시판</string>
+    <string name="main_hospital">병원 찾기</string>
+    <string name="main_samplenick">캡스톤</string>
+    <string name="main_hello">님 안녕하세요!</string>
+    <string name="main_tier">Lv.100 Challenger</string>
 </resources>
