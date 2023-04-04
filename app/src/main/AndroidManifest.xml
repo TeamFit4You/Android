@@ -12,7 +12,10 @@
         android:theme="@style/Theme.Fit4YouAndroid"
         tools:targetApi="31">
         <activity
-            android:name=".BaseBasicQuestionActivity"
+            android:name=".ui.view.basicstatuscheck.BasePoseTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.basicstatuscheck.BaseBasicQuestionActivity"
             android:exported="false" />
         <activity
             android:name=".ui.view.userphysical.UserPhysicalActivity"
@@ -25,10 +28,10 @@
         </activity>
         <activity
             android:name=".ui.view.login.LoginActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
