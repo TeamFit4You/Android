@@ -11,4 +11,7 @@
     <!-- LoginActivity -->
     <color name="login_back">#DADADA</color>
     <color name="login_text">#00A8DC</color>
+
+    <!-- PrgressBar -->
+    <color name="pb_cus">#77FF00</color>
 </resources>
