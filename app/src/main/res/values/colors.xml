@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="main">#00A8DC</color>
+    <color name="status">#0E96C1</color>
 
     <!-- LoginActivity -->
     <color name="login_back">#DADADA</color>
