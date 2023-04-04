@@ -1,4 +1,4 @@
-package com.example.fit4you_android.ui.view.basicstatuscheck.questions
+package com.example.fit4you_android.ui.view.basicstatuscheck.posetest
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,24 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.fit4you_android.R
 
-class BasicQuestions : Fragment() {
+class PoseTestFragment : Fragment() {
 
     companion object {
-        fun newInstance() = BasicQuestions()
+        fun newInstance() = PoseTestFragment()
     }
 
-    private lateinit var viewModel: BasicQuestionsViewModel
+    private lateinit var viewModel: PoseTestViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_basic_questions, container, false)
+        return inflater.inflate(R.layout.fragment_pose_test, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(BasicQuestionsViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(PoseTestViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
