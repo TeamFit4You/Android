@@ -12,6 +12,15 @@
         android:theme="@style/Theme.Fit4YouAndroid"
         tools:targetApi="31">
         <activity
+            android:name=".ui.view.today.TodayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.record.RecordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.recommend.RecommendActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.view.basicstatuscheck.BasePoseTestActivity"
             android:exported="false" />
         <activity
@@ -19,9 +28,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.view.userphysical.UserPhysicalActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".ui.view.login.LoginActivity"
             android:exported="false" />
