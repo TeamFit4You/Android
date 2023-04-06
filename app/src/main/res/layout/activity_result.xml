@@ -6,10 +6,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.today.TodayActivity">
+        tools:context=".ui.view.today.start.ResultActivity">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/tb_todaytitle"
+            android:id="@+id/tb_resulttitle"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/main"
@@ -22,41 +22,62 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/tb_result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
-                    android:text="@string/main_today"
+                    android:text="@string/result_title"
                     android:textColor="@color/white"
                     android:textSize="25sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/today_frag"
+        <TextView
+            android:id="@+id/bodypart"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/result_bodypart"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:background="@drawable/round_corner_color1"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:layout_marginTop="30dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintTop_toBottomOf="@+id/tb_todaytitle"
-            app:layout_constraintBottom_toTopOf="@+id/btn_today_prev"
+            android:layout_marginStart="30dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:name="com.example.fit4you_android.ui.view.today.TodayListFragment"
-            tools:layout="@layout/fragment_today_list" />
+            app:layout_constraintTop_toBottomOf="@+id/tb_resulttitle"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/today_list_ex4"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:background="@drawable/round_corner_color2"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="13dp"
+            app:layout_constraintTop_toBottomOf="@+id/tb_resulttitle"
+            app:layout_constraintStart_toEndOf="@+id/bodypart"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_today_prev"
+            android:id="@+id/btn_exam_prev"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/round_corner_do_login"
             android:text="@string/prev"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/white"
-            android:background="@drawable/round_corner_do_login"
-            android:layout_marginBottom="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

@@ -8,8 +8,8 @@
         android:layout_height="match_parent"
         tools:context=".ui.view.basicstatuscheck.BasePoseTestActivity">
 
-        <FrameLayout
-            android:id="@+id/framelayout_camera"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/pose_frag"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="50dp"
@@ -19,14 +19,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/btn_pose_next"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            android:name="com.example.fit4you_android.ui.view.basicstatuscheck.posetest.PoseTestFragment"
+            tools:layout="@layout/fragment_pose_test" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_pose_next"
-            android:layout_width="150dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:text="@string/next"
-            android:textSize="23sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:background="@drawable/round_corner_do_login"
