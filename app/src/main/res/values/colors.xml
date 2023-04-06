@@ -16,4 +16,7 @@
 
     <!-- PrgressBar -->
     <color name="pb_cus">#77FF00</color>
+
+    <!-- Today Activity & Fragment -->
+    <color name="today_list_go">#8A8A8A</color>
 </resources>

@@ -6,11 +6,11 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.basicstatuscheck.questions.BasicQuestionsFragment">
+        tools:context=".ui.view.today.TodayListFragment">
 
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/today_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello" />
+            android:layout_height="match_parent"/>
     </FrameLayout>
 </layout>

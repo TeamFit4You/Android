@@ -41,9 +41,15 @@
     <string name="main_hello">님 안녕하세요!</string>
     <string name="main_tier">Lv.100 Challenger</string>
 
-    <!-- Recommend Activity -->
+    <!-- Recommend Activity & Fragment -->
 
-    <!-- Record Activity -->
+    <!-- Record Activity & Fragment -->
 
-    <!-- Today Activity -->
+    <!-- Today Activity & Fragment -->
+    <string name="today_list_ex1">목</string>
+    <string name="today_list_ex2">허리</string>
+    <string name="today_list_ex3">어깨</string>
+    <string name="today_list_ex4">발목</string>
+    <string name="today_list_ex5">어찌됐던 이름이 긴 부위</string>
+    <string name="today_list_go">Go!</string>
 </resources>
