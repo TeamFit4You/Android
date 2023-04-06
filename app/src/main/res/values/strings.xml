@@ -42,6 +42,12 @@
     <string name="main_tier">Lv.100 Challenger</string>
 
     <!-- Recommend Activity & Fragment -->
+    <string name="recom_spec1_1">목1</string>
+    <string name="recom_spec1_2">목2</string>
+    <string name="recom_spec1_3">목3</string>
+    <string name="recom_spec2_1">허리1</string>
+    <string name="recom_spec2_2">허리2</string>
+    <string name="recom_spec2_3">허리3</string>
 
     <!-- Record Activity & Fragment -->
 
@@ -60,4 +66,6 @@
     <string name="result_title">운동결과</string>
     <string name="result_bodypart">운동 부위</string>
     <string name="result_end">운동 마치기</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

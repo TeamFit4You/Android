@@ -23,4 +23,6 @@
     <!-- Result Activity -->
     <color name="result_color_title">#47FF76</color>
     <color name="result_color_part">#B957FF</color>
+
+    <color name="recom_items">#D8D8D8</color>
 </resources>
