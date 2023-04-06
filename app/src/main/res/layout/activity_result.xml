@@ -6,10 +6,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.today.start.SelfActivity">
+        tools:context=".ui.view.today.start.ResultActivity">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/tb_selftitle"
+            android:id="@+id/tb_resulttitle"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/main"
@@ -22,27 +22,54 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tb_self_part"
+                    android:id="@+id/tb_result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
-                    android:text="@string/today_list_ex1"
+                    android:text="@string/result_title"
                     android:textColor="@color/white"
                     android:textSize="25sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/exam_title"
-                    android:textColor="@color/white"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
+        <TextView
+            android:id="@+id/bodypart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/result_bodypart"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:background="@drawable/round_corner_color1"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_resulttitle"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/today_list_ex4"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:background="@drawable/round_corner_color2"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="13dp"
+            app:layout_constraintTop_toBottomOf="@+id/tb_resulttitle"
+            app:layout_constraintStart_toEndOf="@+id/bodypart"/>
+
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_self_prev"
+            android:id="@+id/btn_exam_prev"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="100dp"
@@ -53,34 +80,6 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_self_start"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_self_start"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
-            android:background="@drawable/round_corner_do_login"
-            android:text="@string/self_start"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_self_prev"
-            app:layout_constraintEnd_toStartOf="@+id/btn_self_next"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_self_next"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
-            android:background="@drawable/round_corner_do_login"
-            android:text="@string/self_next"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_self_start"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

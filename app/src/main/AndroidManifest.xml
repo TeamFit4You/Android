@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Fit4YouAndroid"
         tools:targetApi="31">
         <activity
+            android:name=".ui.view.today.start.ResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.view.today.start.SelfActivity"
             android:exported="false" />
         <activity

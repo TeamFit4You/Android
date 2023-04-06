@@ -19,4 +19,8 @@
 
     <!-- Today Activity & Fragment -->
     <color name="today_list_go">#8A8A8A</color>
+
+    <!-- Result Activity -->
+    <color name="result_color_title">#47FF76</color>
+    <color name="result_color_part">#B957FF</color>
 </resources>

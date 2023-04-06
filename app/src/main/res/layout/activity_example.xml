@@ -9,7 +9,7 @@
         tools:context=".ui.view.today.start.ExampleActivity">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/tb_todaytitle"
+            android:id="@+id/tb_examtitle"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/main"
@@ -22,7 +22,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tb_today_part"
+                    android:id="@+id/tb_exam_part"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
