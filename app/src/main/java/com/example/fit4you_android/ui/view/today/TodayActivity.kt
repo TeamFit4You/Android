@@ -13,8 +13,8 @@ class TodayActivity : BaseActivity<ActivityTodayBinding, TodayViewModel>() {
     override val viewModel: TodayViewModel by viewModels()
     override fun initView() {
         val listFrag = TodayListFragment()
-        supportFragmentManager.popBackStack()
-        supportFragmentManager.beginTransaction()
+        supportFragmentManager
+            .beginTransaction()
             .replace(R.id.today_frag, listFrag)
             .commit()
     }

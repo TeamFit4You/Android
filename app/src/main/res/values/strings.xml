@@ -52,4 +52,12 @@
     <string name="today_list_ex4">발목</string>
     <string name="today_list_ex5">어찌됐던 이름이 긴 부위</string>
     <string name="today_list_go">Go!</string>
+
+    <!-- Start Package -->
+    <string name="exam_title"> 운동하기</string>
+    <string name="self_next">피드백 보기</string>
+    <string name="self_start">시작!</string>
+    <string name="result_title">운동결과</string>
+    <string name="result_bodypart">운동 부위</string>
+    <string name="result_end">운동 마치기</string>
 </resources>

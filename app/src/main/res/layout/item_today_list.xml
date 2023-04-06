@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="bodypart"
             type="com.example.fit4you_android.data.local.TodayList" />
