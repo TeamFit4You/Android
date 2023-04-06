@@ -2,9 +2,18 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="bodypart"
+            type="com.example.fit4you_android.data.local.TodayList" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/round_corner_name_pass"
         android:elevation="10dp">
 
@@ -12,7 +21,7 @@
             android:id="@+id/list_part"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/today_list_ex5"
+            android:text="@{bodypart.bodyPart, default=@string/today_list_ex5}"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/black"
