@@ -14,12 +14,13 @@
 
             <TextView
                 android:id="@+id/tv_physical_request"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/user_physical_request"
                 android:textSize="23sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
+                android:gravity="center"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
