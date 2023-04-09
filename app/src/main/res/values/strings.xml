@@ -48,6 +48,13 @@
     <string name="recom_spec2_1">허리1</string>
     <string name="recom_spec2_2">허리2</string>
     <string name="recom_spec2_3">허리3</string>
+    <string name="recom_fit_list">운동목록</string>
+    <string name="recom_fit_video">운동영상</string>
+    <string name="recom_fit_algo">추천영상</string>
+    <string name="recom_url1">https://www.youtube.com/watch?v=H-AcDBLqxi4</string>
+    <string name="recom_url2">https://www.youtube.com/watch?v=Hx8Lc_0hUaI</string>
+    <string name="recom_url3">https://www.youtube.com/watch?v=ycnsfRKMPX4</string>
+    <string name="recom_url4">https://www.youtube.com/watch?v=VNQpP6C1fJg</string>
 
     <!-- Record Activity & Fragment -->
 
