@@ -12,19 +12,19 @@ class RecommendActivity : BaseActivity<ActivityRecommendBinding, RecommendViewMo
         get() = R.layout.activity_recommend
     override val viewModel: RecommendViewModel by viewModels()
 
-    override fun initView() {
-        val listFrag = RecommendListFragment()
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.recom_frag, listFrag)
-            .commit()
-    }
-
     override fun initBeforeBinding() {
 
     }
 
     override fun initAfterBinding() {
 
+    }
+
+    override fun initView() {
+        val listFrag = RecommendListFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.recom_frag, listFrag)
+            .commit()
     }
 }

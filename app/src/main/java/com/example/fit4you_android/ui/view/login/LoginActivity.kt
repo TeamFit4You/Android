@@ -2,11 +2,25 @@ package com.example.fit4you_android.ui.view.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.example.fit4you_android.R
+import com.example.fit4you_android.databinding.ActivityLoginBinding
+import com.example.fit4you_android.ui.base.BaseActivity
 
-class LoginActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+class LoginActivity : BaseActivity<ActivityLoginBinding,LoginViewModel>() {
+    override val layoutResourceId: Int
+        get() = R.layout.activity_login
+    override val viewModel: LoginViewModel by viewModels()
+
+    override fun initBeforeBinding() {
+
+    }
+
+    override fun initAfterBinding() {
+
+    }
+
+    override fun initView() {
+        
     }
 }
