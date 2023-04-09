@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fit4you_android.data.local.TodayList
 import com.example.fit4you_android.databinding.ItemTodayListBinding
 
-class ListsViewHolder(val binding: ItemTodayListBinding) : RecyclerView.ViewHolder(binding.root) {
+class TodayListViewHolder(val binding: ItemTodayListBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: TodayList){
         binding.bodypart = item
     }
