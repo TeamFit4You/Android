@@ -1,11 +1,12 @@
 package com.example.fit4you_android.ui.view.basicstatuscheck
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.activity.viewModels
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.ActivityBaseBasicQuestionBinding
 import com.example.fit4you_android.ui.base.BaseActivity
+import com.example.fit4you_android.ui.view.basicstatuscheck.questions.PhysicalFragment
+import com.example.fit4you_android.ui.view.basicstatuscheck.posetest.RomExFragment
+import com.example.fit4you_android.ui.view.basicstatuscheck.questions.UserPainFragment
 
 class BaseBasicQuestionActivity : BaseActivity<ActivityBaseBasicQuestionBinding, BaseBasicQuestionViewModel>() {
     override val layoutResourceId: Int
@@ -21,6 +22,25 @@ class BaseBasicQuestionActivity : BaseActivity<ActivityBaseBasicQuestionBinding,
     }
 
     override fun initView() {
+        val firstFrag = PhysicalFragment()
+        val secondFrag = UserPainFragment()
+        val thirdFrag = RomExFragment()
 
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.basic_frag, firstFrag)
+            .commit()
+        binding.btnBasicNext.setOnClickListener {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.basic_frag, secondFrag)
+                .commit()
+        }
+        binding.btnBasicNext.setOnClickListener {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.basic_frag, thirdFrag)
+                .commit()
+        }
     }
 }

@@ -34,6 +34,9 @@
     <string name="weight_kg">kg</string>
     <string name="age">세</string>
 
+    <!-- Rom Example -->
+    <string name="rom_title">다음 영상을 따라해보세요.</string>
+
     <!-- User Pain Fragment -->
     <string name="pain_request">해당하는 주요 통증 부위에 \n 모두 체크해주세요.</string>
     <string name="pain_part1">목</string>
