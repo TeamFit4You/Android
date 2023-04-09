@@ -27,8 +27,11 @@
     <string name="user_physical_request">키와 몸무게를 입력해주세요.</string>
     <string name="user_height">키</string>
     <string name="user_weight">몸무게</string>
+    <string name="user_sex">성별</string>
+    <string name="user_age">나이</string>
     <string name="height_cm">cm</string>
     <string name="weight_kg">kg</string>
+    <string name="age">세</string>
 
     <!-- Main Activity -->
     <string name="main_today">오늘의 운동</string>

@@ -35,8 +35,8 @@
             app:layout_constraintBottom_toTopOf="@+id/btn_basic_next"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:name="com.example.fit4you_android.ui.view.basicstatuscheck.questions.BasicQuestionsFragment"
-            tools:layout="@layout/fragment_basic_questions" />
+            android:name="com.example.fit4you_android.ui.view.basicstatuscheck.questions.PhysicalFragment"
+            tools:layout="@layout/fragment_physical" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_basic_next"
