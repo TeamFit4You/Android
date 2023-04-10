@@ -23,15 +23,18 @@ class RomExFragment : BaseFragment<FragmentRomExBinding, RomExViewModel>() {
     }
 
     override fun initView() {
-//        val videoView = view.findViewById<VideoView>(R.id.video_view)
-//        val videoUri = Uri.parse("android.resource://" + requireActivity().packageName + "/" + R.raw.video_file_name)
-//        videoView.setVideoURI(videoUri)
-//        videoView.start()
+        val sample_video = arrayListOf(
+            R.raw.rom_ex_video,
+            R.raw.rom_ex_video2,
+            R.raw.rom_ex_video3,
+            R.raw.rom_ex_video4,
+            R.raw.rom_ex_video5
+        )
         val video = binding.vvRomEx
         val seekBar = binding.seekBar
 
         val videoUri =
-            Uri.parse("android.resource://" + requireActivity().packageName + "/" + R.raw.rom_ex_video)
+            Uri.parse("android.resource://" + requireActivity().packageName + "/" + sample_video[1])
         video.setVideoURI(videoUri)
 
         binding.btnPlay.setOnClickListener {
