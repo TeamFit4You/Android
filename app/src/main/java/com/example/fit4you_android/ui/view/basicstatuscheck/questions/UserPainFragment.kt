@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.FragmentUserPainBinding
 import com.example.fit4you_android.ui.base.BaseFragment
+import com.example.fit4you_android.ui.view.basicstatuscheck.posetest.RomExFragment
 
 class UserPainFragment : BaseFragment<FragmentUserPainBinding, UserPainViewModel>() {
     override val layoutResourceId: Int
@@ -24,6 +25,12 @@ class UserPainFragment : BaseFragment<FragmentUserPainBinding, UserPainViewModel
     }
 
     override fun initView() {
-
+        val ThirdFrag = RomExFragment()
+        binding.btnFragPainNext.setOnClickListener {
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.basic_frag, ThirdFrag)
+                .commit()
+        }
     }
 }

@@ -25,6 +25,12 @@ class PhysicalFragment : BaseFragment<FragmentPhysicalBinding, PhysicalViewModel
     }
 
     override fun initView() {
-
+        val secondFrag = UserPainFragment()
+        binding.btnFragPhyNext.setOnClickListener {
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.basic_frag, secondFrag)
+                .commit()
+        }
     }
 }

@@ -32,48 +32,18 @@
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <ProgressBar
-            android:id="@+id/pb_question"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="0dp"
-            android:layout_height="10dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="80dp"
-            android:max="8"
-            android:progress="3"
-            android:progressDrawable="@drawable/round_corner_progressbar_cus"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_checktitle" />
-
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/basic_frag"
-            android:name="com.example.fit4you_android.ui.view.basicstatuscheck.posetest.RomExFragment"
+            android:name="com.example.fit4you_android.ui.view.basicstatuscheck.questions.PhysicalFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="40dp"
-            android:layout_marginBottom="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_basic_next"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pb_question"
-            tools:layout="@layout/fragment_rom_ex" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_basic_next"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:background="@drawable/round_corner_do_login"
-            android:text="@string/next"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_checktitle"
+            tools:layout="@layout/fragment_physical" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

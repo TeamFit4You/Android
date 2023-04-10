@@ -23,24 +23,10 @@ class BaseBasicQuestionActivity : BaseActivity<ActivityBaseBasicQuestionBinding,
 
     override fun initView() {
         val firstFrag = PhysicalFragment()
-        val secondFrag = UserPainFragment()
-        val thirdFrag = RomExFragment()
 
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.basic_frag, firstFrag)
             .commit()
-        binding.btnBasicNext.setOnClickListener {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.basic_frag, secondFrag)
-                .commit()
-        }
-        binding.btnBasicNext.setOnClickListener {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.basic_frag, thirdFrag)
-                .commit()
-        }
     }
 }
