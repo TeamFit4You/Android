@@ -1,23 +1,16 @@
-package com.example.fit4you_android.ui.view.basicstatuscheck.posetest.video
+package com.example.fit4you_android.ui.view.basicstatuscheck.posetest.video_NotUsed
 
 import android.net.Uri
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.VideoView
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.FragmentVideoBinding
 import com.example.fit4you_android.ui.base.BaseFragment
-import com.example.fit4you_android.ui.view.util.observe
 
 class VideoFragment : BaseFragment<FragmentVideoBinding, VideoViewModel>() {
     override val layoutResourceId: Int
@@ -33,21 +26,28 @@ class VideoFragment : BaseFragment<FragmentVideoBinding, VideoViewModel>() {
     }
 
     private fun observeViewModel() {
-        viewModel.fileN.observe(viewLifecycleOwner, Observer { value ->
-
+        viewModel.fileN.observe(viewLifecycleOwner, Observer {
+            Log.d("VideoFrag", "$it")
+            val baseVideoUri =
+                Uri.parse("android.resource://" + requireActivity().packageName + "/")
+            viewModel.setVideo(baseVideoUri.toString(), it.toInt())
+            binding.vvRomEx.setVideoURI(viewModel.videoUri.value)
+            setVideoButton(binding.vvRomEx)
+            setSeekBar(binding.vvRomEx, binding.seekBar)
         })
     }
 
     override fun initView() {
-        val video = binding.vvRomEx
-        val seekBar = binding.seekBar
-        val videoUri =
+        val baseVideoUri =
             Uri.parse("android.resource://" + requireActivity().packageName + "/")
+        viewModel.setVideo(baseVideoUri.toString(), viewModel.fileN.value!!)
+        binding.vvRomEx.setVideoURI(viewModel.videoUri.value)
+        setVideoButton(binding.vvRomEx)
+        setSeekBar(binding.vvRomEx, binding.seekBar)
+    }
 
-        viewModel.setVideo(videoUri.toString(), viewModel.fileN.value!!)
-        video.setVideoURI(viewModel.videoUri.value)
-        setVideoButton(video)
-        setSeekBar(video, seekBar)
+    private fun setNewVideo(){
+
     }
 
     private fun setVideoButton(video: VideoView) {

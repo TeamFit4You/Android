@@ -6,7 +6,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.basicstatuscheck.posetest.video.VideoFragment">
+        tools:context=".ui.view.basicstatuscheck.posetest.video_NotUsed.VideoFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

@@ -1,14 +1,11 @@
-package com.example.fit4you_android.ui.view.basicstatuscheck.posetest.video
+package com.example.fit4you_android.ui.view.basicstatuscheck.posetest.video_NotUsed
 
-import android.app.Application
 import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.fit4you_android.R
 import com.example.fit4you_android.ui.base.BaseViewModel
-import com.example.fit4you_android.ui.view.basicstatuscheck.BaseBasicQuestionActivity
-import com.example.fit4you_android.ui.view.basicstatuscheck.posetest.RomExFragment
 
 class VideoViewModel : BaseViewModel() {
 
@@ -20,6 +17,13 @@ class VideoViewModel : BaseViewModel() {
     val fileN: LiveData<Int>
         get() = _fileN
 
+    private val sample_video = arrayListOf(
+        R.raw.rom_ex_video,
+        R.raw.rom_ex_video2,
+        R.raw.rom_ex_video3,
+        R.raw.rom_ex_video4,
+        R.raw.rom_ex_video5
+    )
 
     init {
         initDataSet()
@@ -30,13 +34,6 @@ class VideoViewModel : BaseViewModel() {
     }
 
     fun setVideo(videoURI: String, num: Int) {
-        val sample_video = arrayListOf(
-            R.raw.rom_ex_video,
-            R.raw.rom_ex_video2,
-            R.raw.rom_ex_video3,
-            R.raw.rom_ex_video4,
-            R.raw.rom_ex_video5
-        )
         _videoUri.value = Uri.parse(videoURI + sample_video[num])
         Log.d("FileIdx - VM, num", "${_fileN.value}, ${num}")
     }
