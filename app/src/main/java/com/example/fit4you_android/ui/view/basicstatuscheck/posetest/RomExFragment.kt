@@ -3,73 +3,47 @@ package com.example.fit4you_android.ui.view.basicstatuscheck.posetest
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.SeekBar
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.FragmentRomExBinding
 import com.example.fit4you_android.ui.base.BaseFragment
+import com.example.fit4you_android.ui.view.basicstatuscheck.posetest.video.VideoFragment
+import com.example.fit4you_android.ui.view.basicstatuscheck.posetest.video.VideoViewModel
 
-class RomExFragment : BaseFragment<FragmentRomExBinding, RomExViewModel>() {
+class RomExFragment : BaseFragment<FragmentRomExBinding, VideoViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_rom_ex
-    override val viewModel: RomExViewModel by viewModels()
+    override val viewModel: VideoViewModel by viewModels()
 
     override fun initBeforeBinding() {
-
+        binding.lifecycleOwner = this
     }
 
     override fun initAfterBinding() {
-
+        observeViewModel()
     }
 
     override fun initView() {
-        val sample_video = arrayListOf(
-            R.raw.rom_ex_video,
-            R.raw.rom_ex_video2,
-            R.raw.rom_ex_video3,
-            R.raw.rom_ex_video4,
-            R.raw.rom_ex_video5
-        )
-        val video = binding.vvRomEx
-        val seekBar = binding.seekBar
+        childFragmentManager
+            .beginTransaction()
+            .replace(R.id.rom_ex_frag, VideoFragment())
+            .commit()
 
-        val videoUri =
-            Uri.parse("android.resource://" + requireActivity().packageName + "/" + sample_video[1])
-        video.setVideoURI(videoUri)
-
-        binding.btnPlay.setOnClickListener {
-            video.start()
-            binding.btnPlay.isEnabled = false
-            binding.btnPause.isEnabled = true
+        binding.btnFragRomNext.setOnClickListener {
+            viewModel.changeIdx()
+            childFragmentManager
+                .beginTransaction()
+                .replace(R.id.rom_ex_frag, VideoFragment())
+                .commit()
         }
-        binding.btnPause.setOnClickListener {
-            video.pause()
-            binding.btnPlay.isEnabled = true
-            binding.btnPause.isEnabled = false
-        }
+    }
 
-        video.setOnPreparedListener {
-            seekBar.max = video.duration
+    private fun observeViewModel() {
+        viewModel.fileN.observe(viewLifecycleOwner, Observer { value ->
 
-            val handler = Handler(Looper.getMainLooper())
-            handler.postDelayed(object : Runnable {
-                override fun run() {
-                    seekBar.progress = video.currentPosition
-                    handler.postDelayed(this, 1000)
-                }
-            }, 0)
-        }
-
-        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                if (fromUser) {
-                    video.seekTo(progress)
-                }
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
     }
 }

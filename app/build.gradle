@@ -42,7 +42,11 @@ dependencies {
 
     implementation "androidx.core:core-ktx:$coreKtxVersion"
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
+
+    // Compose Material3 Design
     implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.compose.material3:material3:$composeMaterial3"
+    implementation "androidx.compose.material3:material3-window-size-class:$composeMaterial3"
     
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
