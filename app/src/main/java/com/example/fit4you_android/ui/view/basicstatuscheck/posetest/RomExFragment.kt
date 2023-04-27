@@ -47,14 +47,14 @@ class RomExFragment : BaseFragment<FragmentRomExBinding, RomExViewModel>() {
         setVideoButton(binding.vvRomEx)
         setSeekBar(binding.vvRomEx, binding.seekBar)
 
-        binding.btnFragRomNext.setOnClickListener {
-            if (viewModel.fileN.value == viewModel.size.value?.minus(1)) {
-                val intent = Intent(requireActivity(), MainActivity::class.java)
-                startActivity(intent)
-            } else {
-                viewModel.changeIdx()
-            }
-        }
+//        binding.btnFragRomNext.setOnClickListener {
+//            if (viewModel.fileN.value == viewModel.size.value?.minus(1)) {
+//                val intent = Intent(requireActivity(), MainActivity::class.java)
+//                startActivity(intent)
+//            } else {
+//                viewModel.changeIdx()
+//            }
+//        }
     }
 
     private fun setVideoButton(video: VideoView) {

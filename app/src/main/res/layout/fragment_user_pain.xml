@@ -13,22 +13,21 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ProgressBar
-                android:id="@+id/pb_rom_ex"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
-                android:max="8"
-                android:progress="2"
-                android:progressDrawable="@drawable/round_corner_progressbar_cus" />
+<!--            <ProgressBar-->
+<!--                android:id="@+id/pb_rom_ex"-->
+<!--                style="@android:style/Widget.ProgressBar.Horizontal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="10dp"-->
+<!--                android:layout_marginStart="40dp"-->
+<!--                android:layout_marginEnd="40dp"-->
+<!--                android:max="8"-->
+<!--                android:progress="2"-->
+<!--                android:progressDrawable="@drawable/round_corner_progressbar_cus" />-->
 
             <TextView
                 android:id="@+id/tv_pain_request"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:text="@string/pain_request"
                 android:textColor="@color/black"
@@ -181,23 +180,23 @@
                 </LinearLayout>
             </ScrollView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center_horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:gravity="center_horizontal">-->
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_frag_pain_next"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="50dp"
-                    android:background="@drawable/round_corner_do_login"
-                    android:text="@string/next"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:id="@+id/btn_frag_pain_next"-->
+<!--                    android:layout_width="120dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="50dp"-->
+<!--                    android:background="@drawable/round_corner_do_login"-->
+<!--                    android:text="@string/next"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:textStyle="bold" />-->
+<!--            </LinearLayout>-->
         </LinearLayout>
     </FrameLayout>
 </layout>
