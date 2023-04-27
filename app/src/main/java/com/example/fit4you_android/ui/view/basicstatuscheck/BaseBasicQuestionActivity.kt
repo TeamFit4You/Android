@@ -1,6 +1,8 @@
 package com.example.fit4you_android.ui.view.basicstatuscheck
 
+import android.content.Intent
 import androidx.activity.viewModels
+import com.example.fit4you_android.MainActivity
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.ActivityBaseBasicQuestionBinding
 import com.example.fit4you_android.ui.base.BaseActivity
@@ -8,6 +10,7 @@ import com.example.fit4you_android.ui.view.basicstatuscheck.notice.RomNoticeFrag
 import com.example.fit4you_android.ui.view.basicstatuscheck.questions.PhysicalFragment
 import com.example.fit4you_android.ui.view.basicstatuscheck.posetest.RomExFragment
 import com.example.fit4you_android.ui.view.basicstatuscheck.posetest.UserRomFragment
+import com.example.fit4you_android.ui.view.basicstatuscheck.posetest.UserVasFragment
 import com.example.fit4you_android.ui.view.basicstatuscheck.questions.UserPainFragment
 
 class BaseBasicQuestionActivity :
@@ -30,6 +33,7 @@ class BaseBasicQuestionActivity :
         val noticeFrag = RomNoticeFragment()
         val romExFrag = RomExFragment()
         val userRomFrag = UserRomFragment()
+        val vasFrag = UserVasFragment()
 
         supportFragmentManager
             .beginTransaction()
@@ -60,6 +64,9 @@ class BaseBasicQuestionActivity :
                 }
                 5 -> {
                     // 1번째 VAS 체크
+                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, vasFrag)
+                        .commit()
+                    binding.pbBasic.setProgress(6)
                 }
                 6 -> {
                     supportFragmentManager.beginTransaction().replace(R.id.basic_frag, romExFrag)
@@ -73,6 +80,9 @@ class BaseBasicQuestionActivity :
                 }
                 8 -> {
                     // 2번째 VAS 체크
+                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, vasFrag)
+                        .commit()
+                    binding.pbBasic.setProgress(9)
                 }
                 9 -> {
                     supportFragmentManager.beginTransaction().replace(R.id.basic_frag, romExFrag)
@@ -86,6 +96,9 @@ class BaseBasicQuestionActivity :
                 }
                 11 -> {
                     // 3번째 VAS 체크
+                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, vasFrag)
+                        .commit()
+                    binding.pbBasic.setProgress(12)
                 }
                 12 -> {
                     supportFragmentManager.beginTransaction().replace(R.id.basic_frag, romExFrag)
@@ -99,6 +112,9 @@ class BaseBasicQuestionActivity :
                 }
                 14 -> {
                     // 4번째 VAS 체크
+                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, vasFrag)
+                        .commit()
+                    binding.pbBasic.setProgress(15)
                 }
                 15 -> {
                     supportFragmentManager.beginTransaction().replace(R.id.basic_frag, romExFrag)
@@ -112,6 +128,13 @@ class BaseBasicQuestionActivity :
                 }
                 17 -> {
                     // 5번째 VAS 체크
+                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, vasFrag)
+                        .commit()
+                    binding.pbBasic.setProgress(18)
+                }
+                else -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
                 }
             }
         }
