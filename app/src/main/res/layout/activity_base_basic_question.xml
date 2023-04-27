@@ -40,7 +40,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginStart="80dp"
             android:layout_marginEnd="80dp"
-            android:max="18"
+            android:max="19"
             android:progress="1"
             android:progressDrawable="@drawable/round_corner_progressbar_cus"
             app:layout_constraintEnd_toEndOf="parent"
