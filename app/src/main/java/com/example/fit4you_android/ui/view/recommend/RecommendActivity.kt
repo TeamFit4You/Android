@@ -1,8 +1,10 @@
 package com.example.fit4you_android.ui.view.recommend
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import com.example.fit4you_android.MainActivity
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.ActivityRecommendBinding
 import com.example.fit4you_android.ui.base.BaseActivity
@@ -26,5 +28,11 @@ class RecommendActivity : BaseActivity<ActivityRecommendBinding, RecommendViewMo
             .beginTransaction()
             .replace(R.id.recom_frag, listFrag)
             .commit()
+
+        binding.btnRecomPrev.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

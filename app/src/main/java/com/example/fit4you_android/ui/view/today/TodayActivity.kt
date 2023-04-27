@@ -1,8 +1,10 @@
 package com.example.fit4you_android.ui.view.today
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import com.example.fit4you_android.MainActivity
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.ActivityTodayBinding
 import com.example.fit4you_android.ui.base.BaseActivity
@@ -26,5 +28,11 @@ class TodayActivity : BaseActivity<ActivityTodayBinding, TodayViewModel>() {
             .beginTransaction()
             .replace(R.id.today_frag, listFrag)
             .commit()
+
+        binding.btnTodayPrev.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
