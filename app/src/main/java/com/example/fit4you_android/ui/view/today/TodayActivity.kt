@@ -11,13 +11,6 @@ class TodayActivity : BaseActivity<ActivityTodayBinding, TodayViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_today
     override val viewModel: TodayViewModel by viewModels()
-    override fun initView() {
-        val listFrag = TodayListFragment()
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.today_frag, listFrag)
-            .commit()
-    }
 
     override fun initBeforeBinding() {
 
@@ -25,5 +18,13 @@ class TodayActivity : BaseActivity<ActivityTodayBinding, TodayViewModel>() {
 
     override fun initAfterBinding() {
 
+    }
+
+    override fun initView() {
+        val listFrag = TodayListFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.today_frag, listFrag)
+            .commit()
     }
 }

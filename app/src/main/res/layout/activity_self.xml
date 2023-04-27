@@ -11,7 +11,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/tb_selftitle"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:background="@color/main"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
                     android:layout_marginStart="30dp"
                     android:text="@string/today_list_ex1"
                     android:textColor="@color/white"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/exam_title"
                     android:textColor="@color/white"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>

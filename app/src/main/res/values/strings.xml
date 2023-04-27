@@ -23,12 +23,40 @@
     <string name="sign_up_join">가입하기</string>
     <string name="sign_up_nick_name">닉네임</string>
 
-    <!-- User Physical Activity -->
+    <!-- Physical Data Activity -->
+    <string name="user_check">사용자 상태 체크</string>
     <string name="user_physical_request">키와 몸무게를 입력해주세요.</string>
     <string name="user_height">키</string>
     <string name="user_weight">몸무게</string>
+    <string name="user_sex">성별</string>
+    <string name="user_age">나이</string>
     <string name="height_cm">cm</string>
     <string name="weight_kg">kg</string>
+    <string name="age">세</string>
+
+    <!-- Rom Example -->
+    <string name="rom_title">다음 영상을 따라해보세요.</string>
+
+    <!-- User Pain Fragment -->
+    <string name="pain_request">해당하는 주요 통증 부위에 \n 모두 체크해주세요.</string>
+    <string name="pain_part1">목</string>
+    <string name="pain_part1_1">거북목</string>
+    <string name="pain_part2">어깨</string>
+    <string name="pain_part2_1">회전근개</string>
+    <string name="pain_part3">허리</string>
+    <string name="pain_part3_1">허리디스크</string>
+    <string name="pain_part3_2">척추관 협착증</string>
+    <string name="pain_part4">손목</string>
+    <string name="pain_part4_1">손목터널증후군</string>
+    <string name="pain_part5">팔꿈치</string>
+    <string name="pain_part5_1">테니스 엘보</string>
+    <string name="pain_part5_2">골프 엘보</string>
+    <string name="pain_part6">발목</string>
+    <string name="pain_part6_1">발목염좌</string>
+    <string name="pain_part7">기타</string>
+    <string name="pain_part7_1">모르겠습니다.</string>
+    <string name="pain_part7_2">없습니다.</string>
+
 
     <!-- Main Activity -->
     <string name="main_today">오늘의 운동</string>

@@ -42,7 +42,11 @@ dependencies {
 
     implementation "androidx.core:core-ktx:$coreKtxVersion"
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
+
+    // Compose Material3 Design
     implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.compose.material3:material3:$composeMaterial3"
+    implementation "androidx.compose.material3:material3-window-size-class:$composeMaterial3"
     
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
@@ -55,6 +59,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
     implementation 'androidx.fragment:fragment-ktx:1.5.6'
+    implementation 'androidx.core:core-ktx:1.9.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
