@@ -67,8 +67,16 @@
     <string name="weight_kg">kg</string>
     <string name="age">세</string>
 
+    <!-- Rom Notice -->
+    <string name="note_title">안내사항</string>
+    <string name="note_text1">이제부터 전문가가 시연한 영상을 보게 됩니다.\n해당 영상을 잘 보고 따라해보세요.</string>
+    <string name="note_text2">카메라는 해당 자세가 잘 나오도록 정면에 위치를 잘 조정해주세요.</string>
+
     <!-- Rom Example -->
     <string name="rom_title">다음 영상을 따라해보세요.</string>
+
+    <!-- Rom Vas -->
+    <string name="vas_request">방금 수행한 자세에 대해서\n통증이 어느정도인지 체크해 주세요.</string>
 
     <!-- User Pain Fragment -->
     <string name="pain_request">해당하는 주요 통증 부위에 \n 모두 체크해주세요.</string>

@@ -25,12 +25,6 @@ class UserPainFragment : BaseFragment<FragmentUserPainBinding, UserPainViewModel
     }
 
     override fun initView() {
-//        val ThirdFrag = RomExFragment()
-//        binding.btnFragPainNext.setOnClickListener {
-//            requireActivity().supportFragmentManager
-//                .beginTransaction()
-//                .replace(R.id.basic_frag, ThirdFrag)
-//                .commit()
-//        }
+
     }
 }
