@@ -2,8 +2,8 @@ package com.example.fit4you_android.data.error.mapper
 
 import android.content.Context
 import com.example.fit4you_android.R
+import com.example.fit4you_android.data.error.*
 import dagger.hilt.android.qualifiers.ApplicationContext
-import org.cazait.data.error.*
 import javax.inject.Inject
 
 class ErrorMapper @Inject constructor(@ApplicationContext val context: Context) :

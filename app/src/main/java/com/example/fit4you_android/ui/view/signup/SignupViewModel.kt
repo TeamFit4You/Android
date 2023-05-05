@@ -12,13 +12,15 @@ import com.example.fit4you_android.data.model.response.IsNicknameDupRes
 import com.example.fit4you_android.data.model.response.SignUpRes
 import com.example.fit4you_android.data.repository.users.UserRepository
 import com.example.fit4you_android.ui.base.BaseViewModel
-import com.example.fit4you_android.ui.view.util.SingleEvent
+import com.example.fit4you_android.util.SingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SignupViewModel @Inject constructor(private val userRepository: UserRepository): BaseViewModel() {
+class SignupViewModel @Inject constructor(private val userRepository: UserRepository) :
+    BaseViewModel() {
+
     private val _signUpProcess = MutableLiveData<Resource<SignUpRes>>()
     val signUpProcess: LiveData<Resource<SignUpRes>>
         get() = _signUpProcess

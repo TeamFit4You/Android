@@ -2,7 +2,7 @@ package com.example.fit4you_android.ui.view.today
 
 import androidx.fragment.app.viewModels
 import com.example.fit4you_android.R
-import com.example.fit4you_android.data.local.TodayList
+import com.example.fit4you_android.data.TodayList
 import com.example.fit4you_android.databinding.FragmentTodayListBinding
 import com.example.fit4you_android.ui.adapter.TodayListAdapter
 import com.example.fit4you_android.ui.base.BaseFragment

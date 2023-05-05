@@ -7,9 +7,8 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface AuthService {
-    @POST("/api/auths/log-in")
+    @POST("/members/sign-in")
     fun postSignIn(
-        @Query("role") role: String = "user",
         @Body signInReq: SignInReq,
     ): Call<SignInRes>
 

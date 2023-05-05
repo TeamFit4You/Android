@@ -11,7 +11,7 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface UserService {
-    @POST("/api/users/sign-up")
+    @POST("/members/sign-up")
     fun postSignUp(@Body signUpRequest: SignUpReq): Call<SignUpRes>
 
     @POST("/api/users/email")

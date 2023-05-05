@@ -5,7 +5,7 @@
     <data>
         <variable
             name="bodypart"
-            type="com.example.fit4you_android.data.local.TodayList" />
+            type="com.example.fit4you_android.data.TodayList" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

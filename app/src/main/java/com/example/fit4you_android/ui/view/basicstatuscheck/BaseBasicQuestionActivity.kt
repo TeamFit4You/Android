@@ -13,7 +13,9 @@ import com.example.fit4you_android.ui.view.basicstatuscheck.posetest.UserRomFrag
 import com.example.fit4you_android.ui.view.basicstatuscheck.posetest.UserVasFragment
 import com.example.fit4you_android.ui.view.basicstatuscheck.questions.UserHistoryFragment
 import com.example.fit4you_android.ui.view.basicstatuscheck.questions.UserPainFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BaseBasicQuestionActivity :
     BaseActivity<ActivityBaseBasicQuestionBinding, BaseBasicQuestionViewModel>() {
     override val layoutResourceId: Int

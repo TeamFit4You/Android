@@ -1,4 +1,4 @@
-package com.example.fit4you_android.ui.view.util
+package com.example.fit4you_android.util
 
 open class SingleEvent<out T>(private val content: T) {
     var hasBeenHandled = false

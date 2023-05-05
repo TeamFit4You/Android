@@ -12,11 +12,7 @@ import com.example.fit4you_android.data.model.response.SignUpRes
 import com.example.fit4you_android.databinding.ActivitySignupBinding
 import com.example.fit4you_android.ui.base.BaseActivity
 import com.example.fit4you_android.ui.view.login.LoginActivity
-import com.example.fit4you_android.ui.view.util.SingleEvent
-import com.example.fit4you_android.ui.view.util.observe
-import com.example.fit4you_android.util.showToast
-import com.example.fit4you_android.util.toGone
-import com.example.fit4you_android.util.toVisible
+import com.example.fit4you_android.util.*
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 

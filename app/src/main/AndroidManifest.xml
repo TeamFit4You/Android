@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".Fit4YouApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -36,13 +37,7 @@
             android:name=".ui.view.recommend.RecommendActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.view.basicstatuscheck.BasePoseTestActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.view.basicstatuscheck.BaseBasicQuestionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.view.userphysical.UserPhysicalActivity"
             android:exported="false" />
         <activity
             android:name=".ui.view.login.LoginActivity"
@@ -57,5 +52,4 @@
             android:name=".MainActivity"
             android:exported="false" />
     </application>
-
 </manifest>

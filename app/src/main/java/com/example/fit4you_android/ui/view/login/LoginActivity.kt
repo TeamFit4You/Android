@@ -1,11 +1,8 @@
 package com.example.fit4you_android.ui.view.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.LiveData
-import com.example.fit4you_android.MainActivity
 import com.example.fit4you_android.R
 import com.example.fit4you_android.data.Resource
 import com.example.fit4you_android.data.error.EMAIL_OR_PASSWORD_ERROR
@@ -14,21 +11,16 @@ import com.example.fit4you_android.databinding.ActivityLoginBinding
 import com.example.fit4you_android.ui.base.BaseActivity
 import com.example.fit4you_android.ui.view.basicstatuscheck.BaseBasicQuestionActivity
 import com.example.fit4you_android.ui.view.signup.SignupActivity
-import com.example.fit4you_android.ui.view.util.SingleEvent
-import com.example.fit4you_android.ui.view.util.observe
-import com.example.fit4you_android.util.showToast
-import com.example.fit4you_android.util.toGone
-import com.example.fit4you_android.util.toVisible
+import com.example.fit4you_android.util.*
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
-class LoginActivity : BaseActivity<ActivityLoginBinding,LoginViewModel>() {
+@AndroidEntryPoint
+class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_login
     override val viewModel: LoginViewModel by viewModels()
 
-    override fun initBeforeBinding() {
-
-    }
 
     override fun initAfterBinding() {
         observeViewModel()
@@ -37,6 +29,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding,LoginViewModel>() {
     override fun initView() {
         initSignUpBtn()
         initSignInBtn()
+    }
+
+    override fun initBeforeBinding() {
+
     }
 
     private fun observeViewModel() {
@@ -55,7 +51,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding,LoginViewModel>() {
                 binding.pbLoginLoaderView.toGone()
                 when (status.data.result) {
                     "SUCCESS" -> {
-                        val intent = Intent(this, MainActivity::class.java)
+                        val intent = Intent(this, BaseBasicQuestionActivity::class.java)
                         startActivity(intent)
                         finish()
                     }

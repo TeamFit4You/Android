@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
-import com.example.fit4you_android.ui.view.util.SingleEvent
 
 fun AppCompatActivity.replace(@IdRes frameId: Int, fragment: Fragment) {
     supportFragmentManager.beginTransaction().replace(frameId, fragment, null).commit()

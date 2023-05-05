@@ -8,7 +8,9 @@ import com.example.fit4you_android.MainActivity
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.ActivityRecommendBinding
 import com.example.fit4you_android.ui.base.BaseActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RecommendActivity : BaseActivity<ActivityRecommendBinding, RecommendViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_recommend
