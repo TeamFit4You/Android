@@ -22,37 +22,53 @@ class RomExFragment : BaseFragment<FragmentRomExBinding, RomExViewModel>() {
     }
 
     override fun initAfterBinding() {
-        observeViewModel()
+//        observeViewModel()
     }
 
     private fun observeViewModel() {
-        viewModel.fileN.observe(viewLifecycleOwner, Observer {
-            Log.d("VideoFrag", "$it")
-            val baseVideoUri =
-                Uri.parse("android.resource://" + requireActivity().packageName + "/")
-            viewModel.setVideo(baseVideoUri.toString(), it.toInt())
-            binding.vvRomEx.setVideoURI(viewModel.videoUri.value)
-            setVideoButton(binding.vvRomEx)
-            setSeekBar(binding.vvRomEx, binding.seekBar)
-        })
+//        viewModel.fileN.observe(viewLifecycleOwner, Observer {
+//            Log.d("VideoFrag", "$it")
+//            val baseVideoUri =
+//                Uri.parse("android.resource://" + requireActivity().packageName + "/")
+//            viewModel.setVideo(baseVideoUri.toString(), it.toInt())
+//            binding.vvRomEx.setVideoURI(viewModel.videoUri.value)
+//            setVideoButton(binding.vvRomEx)
+//            setSeekBar(binding.vvRomEx, binding.seekBar)
+//        })
     }
 
     override fun initView() {
-        val baseVideoUri =
-            Uri.parse("android.resource://" + requireActivity().packageName + "/")
-        viewModel.setVideo(baseVideoUri.toString(), viewModel.fileN.value!!)
-        binding.vvRomEx.setVideoURI(viewModel.videoUri.value)
+        val videoIdx = arguments?.getInt("idx")
+        Log.d("videoIdx", "$videoIdx")
+        when(videoIdx){
+            0 -> {
+                val videoFrag = arguments?.getString("file0")
+                val videoUri = Uri.parse(videoFrag)
+                binding.vvRomEx.setVideoURI(videoUri)
+            }
+            1 -> {
+                val videoFrag = arguments?.getString("file1")
+                val videoUri = Uri.parse(videoFrag)
+                binding.vvRomEx.setVideoURI(videoUri)
+            }
+            2 -> {
+                val videoFrag = arguments?.getString("file2")
+                val videoUri = Uri.parse(videoFrag)
+                binding.vvRomEx.setVideoURI(videoUri)
+            }
+            3 -> {
+                val videoFrag = arguments?.getString("file3")
+                val videoUri = Uri.parse(videoFrag)
+                binding.vvRomEx.setVideoURI(videoUri)
+            }
+            4 -> {
+                val videoFrag = arguments?.getString("file4")
+                val videoUri = Uri.parse(videoFrag)
+                binding.vvRomEx.setVideoURI(videoUri)
+            }
+        }
         setVideoButton(binding.vvRomEx)
         setSeekBar(binding.vvRomEx, binding.seekBar)
-
-//        binding.btnFragRomNext.setOnClickListener {
-//            if (viewModel.fileN.value == viewModel.size.value?.minus(1)) {
-//                val intent = Intent(requireActivity(), MainActivity::class.java)
-//                startActivity(intent)
-//            } else {
-//                viewModel.changeIdx()
-//            }
-//        }
     }
 
     private fun setVideoButton(video: VideoView) {

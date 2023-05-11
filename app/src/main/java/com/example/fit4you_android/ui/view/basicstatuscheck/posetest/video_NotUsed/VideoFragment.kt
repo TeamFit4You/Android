@@ -22,7 +22,7 @@ class VideoFragment : BaseFragment<FragmentVideoBinding, VideoViewModel>() {
     }
 
     override fun initAfterBinding() {
-        observeViewModel()
+//        observeViewModel()
     }
 
     private fun observeViewModel() {
@@ -38,12 +38,12 @@ class VideoFragment : BaseFragment<FragmentVideoBinding, VideoViewModel>() {
     }
 
     override fun initView() {
-        val baseVideoUri =
-            Uri.parse("android.resource://" + requireActivity().packageName + "/")
-        viewModel.setVideo(baseVideoUri.toString(), viewModel.fileN.value!!)
-        binding.vvRomEx.setVideoURI(viewModel.videoUri.value)
-        setVideoButton(binding.vvRomEx)
-        setSeekBar(binding.vvRomEx, binding.seekBar)
+//        val baseVideoUri =
+//            Uri.parse("android.resource://" + requireActivity().packageName + "/")
+//        viewModel.setVideo(baseVideoUri.toString(), viewModel.fileN.value!!)
+//        binding.vvRomEx.setVideoURI(viewModel.videoUri.value)
+//        setVideoButton(binding.vvRomEx)
+//        setSeekBar(binding.vvRomEx, binding.seekBar)
     }
 
     private fun setNewVideo(){
