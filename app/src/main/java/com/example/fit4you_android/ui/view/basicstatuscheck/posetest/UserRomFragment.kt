@@ -4,13 +4,8 @@ import android.Manifest
 import android.content.ContentValues
 import android.content.pm.PackageManager
 import android.os.Build
-import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -31,6 +26,7 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 typealias LumaListener = (luma: Double) -> Unit
+
 class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_user_rom
@@ -71,15 +67,17 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, name)
             put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
-            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
                 put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
             }
         }
 
         val outputOptions = ImageCapture.OutputFileOptions
-            .Builder(requireActivity().contentResolver,
+            .Builder(
+                requireActivity().contentResolver,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                contentValues)
+                contentValues
+            )
             .build()
 
         imageCapture.takePicture(
@@ -90,7 +88,7 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
                     Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
                 }
 
-                override fun onImageSaved(output: ImageCapture.OutputFileResults){
+                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
@@ -129,15 +127,17 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
         recording = videoCapture.output
             .prepareRecording(requireContext(), mediaStoreOutputOptions)
             .apply {
-                if (PermissionChecker.checkSelfPermission(requireContext(),
-                        Manifest.permission.RECORD_AUDIO) ==
-                    PermissionChecker.PERMISSION_GRANTED)
-                {
+                if (PermissionChecker.checkSelfPermission(
+                        requireContext(),
+                        Manifest.permission.RECORD_AUDIO
+                    ) ==
+                    PermissionChecker.PERMISSION_GRANTED
+                ) {
                     withAudioEnabled()
                 }
             }
             .start(ContextCompat.getMainExecutor(requireContext())) { recordEvent ->
-                when(recordEvent) {
+                when (recordEvent) {
                     is VideoRecordEvent.Start -> {
                         binding.videoCaptureButton.apply {
                             text = getString(R.string.stop_capture)
@@ -153,8 +153,10 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
                         } else {
                             recording?.close()
                             recording = null
-                            Log.e(TAG, "Video capture ends with error: " +
-                                    "${recordEvent.error}")
+                            Log.e(
+                                TAG, "Video capture ends with error: " +
+                                        "${recordEvent.error}"
+                            )
                         }
                         binding.videoCaptureButton.apply {
                             text = getString(R.string.start_capture)
@@ -177,19 +179,29 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
                 }
 
             val recorder = Recorder.Builder()
-                .setQualitySelector(QualitySelector.from(Quality.HIGHEST))
-                .build()
-//                .setQualitySelector(QualitySelector.from(Quality.HIGHEST,
-//                    FallbackStrategy.higherQualityOrLowerThan(Quality.SD)))
+//                .setQualitySelector(QualitySelector.from(Quality.HIGHEST))
 //                .build()
+                .setQualitySelector(
+                    QualitySelector.from(
+                        Quality.HIGHEST,
+                        FallbackStrategy.higherQualityOrLowerThan(Quality.SD)
+                    )
+                )
+                .build()
             videoCapture = VideoCapture.withOutput(recorder)
-//            imageCapture = ImageCapture.Builder().build()
+            imageCapture = ImageCapture.Builder().build()
 
-            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+            val cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
 
             try {
                 cameraProvider.unbindAll()
-                cameraProvider.bindToLifecycle(this, cameraSelector, preview, videoCapture)
+                cameraProvider.bindToLifecycle(
+                    viewLifecycleOwner,
+                    cameraSelector,
+                    preview,
+                    imageCapture,
+                    videoCapture
+                )
             } catch (exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)
             }
@@ -226,7 +238,11 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
             if (allPermissionsGranted()) {
                 startCamera()
             } else {
-                Toast.makeText(requireActivity(), "Permissions not granted by the user.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireActivity(),
+                    "Permissions not granted by the user.",
+                    Toast.LENGTH_SHORT
+                ).show()
                 requireActivity().finish()
             }
         }
