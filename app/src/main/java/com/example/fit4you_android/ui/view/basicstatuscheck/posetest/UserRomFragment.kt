@@ -32,7 +32,6 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
         get() = R.layout.fragment_user_rom
     override val viewModel: UserRomViewModel by viewModels()
 
-    private var imageCapture: ImageCapture? = null
     private var videoCapture: VideoCapture<Recorder>? = null
     private var recording: Recording? = null
     private lateinit var cameraExecutor: ExecutorService
@@ -53,48 +52,9 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
     }
 
     override fun initView() {
-        binding.imageCaptureButton.setOnClickListener { takePhoto() }
         binding.videoCaptureButton.setOnClickListener { captureVideo() }
 
         cameraExecutor = Executors.newSingleThreadExecutor()
-    }
-
-    private fun takePhoto() {
-        val imageCapture = imageCapture ?: return
-
-        val name = SimpleDateFormat(FILENAME_FORMAT, Locale.US)
-            .format(System.currentTimeMillis())
-        val contentValues = ContentValues().apply {
-            put(MediaStore.MediaColumns.DISPLAY_NAME, name)
-            put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
-                put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
-            }
-        }
-
-        val outputOptions = ImageCapture.OutputFileOptions
-            .Builder(
-                requireActivity().contentResolver,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                contentValues
-            )
-            .build()
-
-        imageCapture.takePicture(
-            outputOptions, ContextCompat.getMainExecutor(requireContext()),
-            object : ImageCapture.OnImageSavedCallback {
-
-                override fun onError(exc: ImageCaptureException) {
-                    Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
-                }
-
-                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val msg = "Photo capture succeeded: ${output.savedUri}"
-                    Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, msg)
-                }
-            }
-        )
     }
 
     private fun captureVideo() {
@@ -179,8 +139,10 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
                 }
 
             val recorder = Recorder.Builder()
+                // 아래와 같이 사용하면 비디오 사용 사례가 추가됨.
 //                .setQualitySelector(QualitySelector.from(Quality.HIGHEST))
 //                .build()
+                // 아래는 필요한 Quality.HIGEST가 이미지 캡쳐에서 지원되지 않는 경우 CameraX가 지원되는 해상도 선택 가능
                 .setQualitySelector(
                     QualitySelector.from(
                         Quality.HIGHEST,
@@ -189,7 +151,6 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
                 )
                 .build()
             videoCapture = VideoCapture.withOutput(recorder)
-            imageCapture = ImageCapture.Builder().build()
 
             val cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
 
@@ -199,7 +160,6 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
                     viewLifecycleOwner,
                     cameraSelector,
                     preview,
-                    imageCapture,
                     videoCapture
                 )
             } catch (exc: Exception) {
