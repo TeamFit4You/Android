@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.fit4you_android.R
-import com.example.fit4you_android.data.local.RecommendData
-import com.example.fit4you_android.data.local.TodayList
+import com.example.fit4you_android.data.RecommendData
+import com.example.fit4you_android.data.TodayList
 import com.example.fit4you_android.databinding.FragmentRecommendListBinding
 import com.example.fit4you_android.ui.adapter.RecommendListAdapter
 import com.example.fit4you_android.ui.adapter.TodayListAdapter

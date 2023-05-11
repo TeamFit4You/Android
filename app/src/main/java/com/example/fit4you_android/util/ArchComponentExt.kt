@@ -1,4 +1,4 @@
-package com.example.fit4you_android.ui.view.util
+package com.example.fit4you_android.util
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData

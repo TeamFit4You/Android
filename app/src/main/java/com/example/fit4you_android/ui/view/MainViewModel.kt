@@ -1,4 +1,4 @@
-package com.example.fit4you_android
+package com.example.fit4you_android.ui.view
 
 import com.example.fit4you_android.ui.base.BaseViewModel
 

@@ -1,4 +1,4 @@
-package com.example.fit4you_android.data.local
+package com.example.fit4you_android.data
 
 data class RecommendData(
     val bodyPart: String,
@@ -6,3 +6,4 @@ data class RecommendData(
     val spec2: String,
     val spec3: String
 )
+
