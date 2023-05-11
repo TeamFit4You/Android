@@ -47,7 +47,7 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
             startCamera()
         } else {
             ActivityCompat.requestPermissions(
-                this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
+                requireActivity(), REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
             )
         }
     }
@@ -77,13 +77,13 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
         }
 
         val outputOptions = ImageCapture.OutputFileOptions
-            .Builder(contentResolver,
+            .Builder(requireActivity().contentResolver,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                 contentValues)
             .build()
 
         imageCapture.takePicture(
-            outputOptions, ContextCompat.getMainExecutor(this),
+            outputOptions, ContextCompat.getMainExecutor(requireContext()),
             object : ImageCapture.OnImageSavedCallback {
 
                 override fun onError(exc: ImageCaptureException) {
@@ -92,7 +92,7 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults){
                     val msg = "Photo capture succeeded: ${output.savedUri}"
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
                 }
             }
@@ -122,21 +122,21 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
         }
 
         val mediaStoreOutputOptions = MediaStoreOutputOptions
-            .Builder(contentResolver, MediaStore.Video.Media.EXTERNAL_CONTENT_URI)
+            .Builder(requireActivity().contentResolver, MediaStore.Video.Media.EXTERNAL_CONTENT_URI)
             .setContentValues(contentValues)
             .build()
 
         recording = videoCapture.output
-            .prepareRecording(this, mediaStoreOutputOptions)
+            .prepareRecording(requireContext(), mediaStoreOutputOptions)
             .apply {
-                if (PermissionChecker.checkSelfPermission(this,
+                if (PermissionChecker.checkSelfPermission(requireContext(),
                         Manifest.permission.RECORD_AUDIO) ==
                     PermissionChecker.PERMISSION_GRANTED)
                 {
                     withAudioEnabled()
                 }
             }
-            .start(ContextCompat.getMainExecutor(this)) { recordEvent ->
+            .start(ContextCompat.getMainExecutor(requireContext())) { recordEvent ->
                 when(recordEvent) {
                     is VideoRecordEvent.Start -> {
                         binding.videoCaptureButton.apply {
@@ -148,7 +148,7 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
                         if (!recordEvent.hasError()) {
                             val msg = "Video capture succeeded: " +
                                     "${recordEvent.outputResults.outputUri}"
-                            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
                             Log.d(TAG, msg)
                         } else {
                             recording?.close()
@@ -166,7 +166,7 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
     }
 
     private fun startCamera() {
-        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
 
         cameraProviderFuture.addListener(Runnable {
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
@@ -193,12 +193,12 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
             } catch (exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)
             }
-        }, ContextCompat.getMainExecutor(this))
+        }, ContextCompat.getMainExecutor(requireContext()))
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(
-            baseContext, it
+            requireContext(), it
         ) == PackageManager.PERMISSION_GRANTED
     }
 
@@ -226,8 +226,8 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
             if (allPermissionsGranted()) {
                 startCamera()
             } else {
-                Toast.makeText(this, "Permissions not granted by the user.", Toast.LENGTH_SHORT).show()
-                finish()
+                Toast.makeText(requireActivity(), "Permissions not granted by the user.", Toast.LENGTH_SHORT).show()
+                requireActivity().finish()
             }
         }
     }
