@@ -2,7 +2,7 @@ package com.example.fit4you_android.ui.view.today
 
 import android.content.Intent
 import androidx.activity.viewModels
-import com.example.fit4you_android.MainActivity
+import com.example.fit4you_android.ui.view.MainActivity
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.ActivityTodayBinding
 import com.example.fit4you_android.ui.base.BaseActivity

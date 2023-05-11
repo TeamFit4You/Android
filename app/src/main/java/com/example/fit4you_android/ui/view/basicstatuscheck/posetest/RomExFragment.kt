@@ -1,6 +1,5 @@
 package com.example.fit4you_android.ui.view.basicstatuscheck.posetest
 
-import android.content.Intent
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
@@ -9,7 +8,6 @@ import android.widget.SeekBar
 import android.widget.VideoView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.example.fit4you_android.MainActivity
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.FragmentRomExBinding
 import com.example.fit4you_android.ui.base.BaseFragment
