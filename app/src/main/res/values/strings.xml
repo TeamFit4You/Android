@@ -75,6 +75,10 @@
     <!-- Rom Example -->
     <string name="rom_title">다음 영상을 따라해보세요.</string>
 
+    <!-- Rom User -->
+    <string name="start_capture">시작!</string>
+    <string name="stop_capture">정지!</string>
+
     <!-- Rom Vas -->
     <string name="vas_request">방금 수행한 자세에 대해서\n통증이 어느정도인지 체크해 주세요.</string>
 
@@ -142,11 +146,6 @@
     <string name="result_title">운동결과</string>
     <string name="result_bodypart">운동 부위</string>
     <string name="result_end">운동 마치기</string>
-
-    <!-- CameraX -->
-    <string name="take_photo">Take Photo</string>
-    <string name="start_capture">Start Capture</string>
-    <string name="stop_capture">Stop Capture</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

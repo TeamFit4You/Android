@@ -152,6 +152,7 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
                 .build()
             videoCapture = VideoCapture.withOutput(recorder)
 
+            // 전면카메라가 default
             val cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
 
             try {
