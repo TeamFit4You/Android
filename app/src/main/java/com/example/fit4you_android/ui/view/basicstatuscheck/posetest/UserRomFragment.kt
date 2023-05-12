@@ -188,8 +188,8 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
                 // 아래는 필요한 Quality.HIGEST가 이미지 캡쳐에서 지원되지 않는 경우 CameraX가 지원되는 해상도 선택 가능
                 .setQualitySelector(
                     QualitySelector.from(
-                        Quality.HIGHEST,
-                        FallbackStrategy.higherQualityOrLowerThan(Quality.SD)
+                        Quality.SD,
+                        FallbackStrategy.lowerQualityThan(Quality.SD)
                     )
                 )
                 .build()
