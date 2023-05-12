@@ -182,14 +182,10 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
                 }
             // 비디오 캡쳐를 위한 Recorder를 설정
             val recorder = Recorder.Builder()
-                // 아래와 같이 사용하면 비디오 사용 사례가 추가됨.
-//                .setQualitySelector(QualitySelector.from(Quality.HIGHEST))
-//                .build()
-                // 아래는 필요한 Quality.HIGEST가 이미지 캡쳐에서 지원되지 않는 경우 CameraX가 지원되는 해상도 선택 가능
                 .setQualitySelector(
                     QualitySelector.from(
-                        Quality.HIGHEST,
-                        FallbackStrategy.higherQualityOrLowerThan(Quality.SD)
+                        Quality.SD,
+                        FallbackStrategy.lowerQualityThan(Quality.SD)
                     )
                 )
                 .build()
