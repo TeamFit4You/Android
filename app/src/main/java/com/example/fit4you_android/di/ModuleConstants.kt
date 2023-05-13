@@ -8,4 +8,4 @@ const val CONTENT_TYPE = "Content-Type"
 const val CONTENT_TYPE_VALUE = "application/json"
 const val ACCESS_TOKEN = "Authorization"
 
-const val BASE_URL = "http://192.168.219.105:8080"
+const val BASE_URL = "http://52.78.234.229"
