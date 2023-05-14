@@ -146,7 +146,7 @@ class UserRomFragment : BaseFragment<FragmentUserRomBinding, UserRomViewModel>()
                     }
                     is VideoRecordEvent.Finalize -> {
                         if (!recordEvent.hasError()) {
-                            val msg = "Video capture succeeded: " +
+                            val msg = "영상촬영 완료! 저장 경로: " +
                                     "${recordEvent.outputResults.outputUri}"
                             Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
                             Log.d(TAG, msg)

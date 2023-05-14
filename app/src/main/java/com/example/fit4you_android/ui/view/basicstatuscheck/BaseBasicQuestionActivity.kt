@@ -28,11 +28,12 @@ class BaseBasicQuestionActivity :
 
     // 사용자의 통증 정보를 파악할 수 있는 샘플 영상
     private val sample_video = arrayListOf(
-        R.raw.rom_ex_video,
-        R.raw.rom_ex_video2,
-        R.raw.rom_ex_video3,
-        R.raw.rom_ex_video4,
-        R.raw.rom_ex_video5
+        R.raw.romex1,
+        R.raw.romex2,
+        R.raw.romex3,
+        R.raw.romex4,
+        R.raw.romex5,
+        R.raw.romex6,
     )
 
     override fun initBeforeBinding() {
@@ -192,6 +193,29 @@ class BaseBasicQuestionActivity :
                     supportFragmentManager.beginTransaction().replace(R.id.basic_frag, vasFrag)
                         .commit()
                     binding.pbBasic.setProgress(19)
+                }
+                19 -> {
+                    viewModel.setVideo(baseVideoUri.toString(), sample_video[5])
+                    bundle.putInt("idx", 5)
+                    viewModel.videoUri.observe(this, Observer {
+                        bundle.putString("file5", it.toString())
+                    })
+                    romExFrag.arguments = bundle
+
+                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, romExFrag)
+                        .commit()
+                    binding.pbBasic.setProgress(20)
+                }
+                20 -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, userRomFrag)
+                        .commit()
+                    binding.pbBasic.setProgress(21)
+                }
+                21 -> {
+                    // 5번째 VAS 체크
+                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, vasFrag)
+                        .commit()
+                    binding.pbBasic.setProgress(22)
                 }
                 else -> {
                     val intent = Intent(this, MainActivity::class.java)

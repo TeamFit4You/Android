@@ -40,7 +40,7 @@ class RomExFragment : BaseFragment<FragmentRomExBinding, RomExViewModel>() {
     override fun initView() {
         val videoIdx = arguments?.getInt("idx")
         Log.d("videoIdx", "$videoIdx")
-        when(videoIdx){
+        when (videoIdx) {
             0 -> {
                 val videoFrag = arguments?.getString("file0")
                 val videoUri = Uri.parse(videoFrag)
@@ -63,6 +63,11 @@ class RomExFragment : BaseFragment<FragmentRomExBinding, RomExViewModel>() {
             }
             4 -> {
                 val videoFrag = arguments?.getString("file4")
+                val videoUri = Uri.parse(videoFrag)
+                binding.vvRomEx.setVideoURI(videoUri)
+            }
+            5 -> {
+                val videoFrag = arguments?.getString("file5")
                 val videoUri = Uri.parse(videoFrag)
                 binding.vvRomEx.setVideoURI(videoUri)
             }

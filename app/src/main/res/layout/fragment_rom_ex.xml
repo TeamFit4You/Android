@@ -25,19 +25,53 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/romex_ex"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/notice_2_1_1"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_rom_ex_request" />
+
             <VideoView
                 android:id="@+id/vv_rom_ex"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/seek_bar"
+                app:layout_constraintBottom_toTopOf="@+id/romex_note"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_rom_ex_request" />
+                app:layout_constraintTop_toBottomOf="@id/romex_ex" />
+
+            <ScrollView
+                android:id="@+id/romex_note"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                app:layout_constraintBottom_toTopOf="@+id/seek_bar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/rom_note"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rom1_note"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+            </ScrollView>
 
             <androidx.appcompat.widget.AppCompatSeekBar
                 android:id="@+id/seek_bar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="15dp"
                 android:max="100"
                 android:progress="0"
                 app:layout_constraintBottom_toTopOf="@id/layout_control"
@@ -47,7 +81,7 @@
             <LinearLayout
                 android:id="@+id/layout_control"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
