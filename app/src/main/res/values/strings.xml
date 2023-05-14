@@ -53,8 +53,13 @@
     <string name="expired_refresh_token">접근 권한 재발급 실패</string>
 
     <!-- User History Activity -->
-    <string name="history_title">최근 3개월 이내 병원에서 \n 진단받은 진단명이나 \n 과거 병력을 적어주세요.</string>
-    <string name="history_question">진단명\n또는\n병력</string>
+    <string name="history_title">선택하신 주요 통증 부위에 대한 설문을 실시할게요.</string>
+    <string name="history_q1">Q1) 최근 6개월 내에 수술을 받으신 적이 있나요?</string>
+    <string name="history_q2">Q2) 최근 6개월 내에 병원에서 진단받으신 적이 있나요?\n있다면 2-1번으로, 없다면 3번으로 가세요.</string>
+    <string name="history_q2_1">Q2-1)진단명을 체크해주세요.</string>
+    <string name="history_q3">이제 선택하신 통증 부위에 대한 관절 가동범위와 통증 정도에 대해 파악하는 검사를 실시하겠습니다.\n다음 페이지로 가주세요.</string>
+    <string name="history_yes">네</string>
+    <string name="history_no">아니요</string>
 
     <!-- Physical Data Activity -->
     <string name="user_check">사용자 상태 체크</string>
@@ -86,14 +91,14 @@
     <!-- User Pain Fragment -->
     <string name="pain_request">해당하는 주요 통증 부위에 \n 모두 체크해주세요.</string>
     <string name="pain_part1">목</string>
-    <string name="pain_part1_1">거북목</string>
+    <string name="pain_part1_1">목 - 거북목</string>
     <string name="pain_part2">어깨</string>
-    <string name="pain_part2_1">회전근개</string>
+    <string name="pain_part2_1">어깨 - 회전근개 파열</string>
     <string name="pain_part3">허리</string>
-    <string name="pain_part3_1">허리디스크</string>
-    <string name="pain_part3_2">척추관 협착증</string>
+    <string name="pain_part3_1">허리 - 허리디스크</string>
+    <string name="pain_part3_2">허리 - 척추관 협착증</string>
     <string name="pain_part4">손목</string>
-    <string name="pain_part4_1">손목터널증후군</string>
+    <string name="pain_part4_1">손목 - 손목터널증후군</string>
     <string name="pain_part5">팔꿈치</string>
     <string name="pain_part5_1">테니스 엘보</string>
     <string name="pain_part5_2">골프 엘보</string>

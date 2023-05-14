@@ -64,12 +64,12 @@ class BaseBasicQuestionActivity :
         binding.btnFragNext.setOnClickListener {
             when (binding.pbBasic.progress) {
                 1 -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, historyFrag)
+                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, painFrag)
                         .commit()
                     binding.pbBasic.setProgress(2)
                 }
                 2 -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, painFrag)
+                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, historyFrag)
                         .commit()
                     binding.pbBasic.setProgress(3)
                 }
