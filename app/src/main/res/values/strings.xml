@@ -74,11 +74,18 @@
 
     <!-- Rom Notice -->
     <string name="note_title">안내사항</string>
-    <string name="note_text1">이제부터 전문가가 시연한 영상을 보게 됩니다.\n해당 영상을 잘 보고 따라해보세요.</string>
-    <string name="note_text2">카메라는 해당 자세가 잘 나오도록 정면에 위치를 잘 조정해주세요.</string>
+    <string name="notice_1">제공되는 검사는 다음과 같습니다.</string>
+    <string name="notice_2_1_1">1) 차렷자체에서 귀까지 앞으로 팔 옮기기\n(정면촬영)</string>
+    <string name="notice_2_1_2">2) 차렷자세에서 귀까지 옆으로 팔 올리기\n(측면촬영)</string>
+    <string name="notice_2_2_1">3) 팔꿈치를 어깨와 나란히 하고 팔 하단을 수직으로 움직이기\n(정면촬영)</string>
+    <string name="notice_2_2_2">4) 팔꿈치를 어깨와 나란히 하고 팔 하단을 수직으로 움직이기\n(측면촬영)</string>
+    <string name="notice_2_3_1">5) 대충 어떤 부위에 대한 테스트인지 안내하는 문구~~~~\n(정면촬영)</string>
+    <string name="notice_2_3_2">6) 대충대충 어떤 부위에 대한 테스트인지 안내하는 문구~~~22\n(측면촬영)</string>
+    <string name="notice_3">먼저 전문가의 영상을 시청하고,\n사용자의 영상을 촬영한 뒤,\n통증 정도에 대해 체크해주세요.</string>
 
     <!-- Rom Example -->
     <string name="rom_title">다음 영상을 따라해보세요.</string>
+    <string name="rom1_note">1. 어깨관절을 움직이지 말고 팔을 들어올리세요.\n2. 손바닥이 몸 안쪽을 보도록 하고 팔을 들어올리세요.\n3. 자세를 유지하기 힘든 정도의 통증이 느껴지면 검사를 중단하세요.</string>
 
     <!-- Rom User -->
     <string name="start_capture">시작!</string>
@@ -86,7 +93,7 @@
     <string name="timer">3</string>
 
     <!-- Rom Vas -->
-    <string name="vas_request">방금 수행한 자세에 대해서\n통증이 어느정도인지 체크해 주세요.</string>
+    <string name="vas_request">방금 실시한 검사 후에 느껴지는 통증의 정도는 어떠한가요?</string>
 
     <!-- User Pain Fragment -->
     <string name="pain_request">해당하는 주요 통증 부위에 \n 모두 체크해주세요.</string>

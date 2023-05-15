@@ -40,30 +40,41 @@ class RomExFragment : BaseFragment<FragmentRomExBinding, RomExViewModel>() {
     override fun initView() {
         val videoIdx = arguments?.getInt("idx")
         Log.d("videoIdx", "$videoIdx")
-        when(videoIdx){
+        when (videoIdx) {
             0 -> {
                 val videoFrag = arguments?.getString("file0")
                 val videoUri = Uri.parse(videoFrag)
+                binding.romTitle.text = arguments?.getString("rom_title0")
                 binding.vvRomEx.setVideoURI(videoUri)
             }
             1 -> {
                 val videoFrag = arguments?.getString("file1")
                 val videoUri = Uri.parse(videoFrag)
+                binding.romTitle.text = arguments?.getString("rom_title1")
                 binding.vvRomEx.setVideoURI(videoUri)
             }
             2 -> {
                 val videoFrag = arguments?.getString("file2")
                 val videoUri = Uri.parse(videoFrag)
+                binding.romTitle.text = arguments?.getString("rom_title2")
                 binding.vvRomEx.setVideoURI(videoUri)
             }
             3 -> {
                 val videoFrag = arguments?.getString("file3")
                 val videoUri = Uri.parse(videoFrag)
+                binding.romTitle.text = arguments?.getString("rom_title3")
                 binding.vvRomEx.setVideoURI(videoUri)
             }
             4 -> {
                 val videoFrag = arguments?.getString("file4")
                 val videoUri = Uri.parse(videoFrag)
+                binding.romTitle.text = arguments?.getString("rom_title4")
+                binding.vvRomEx.setVideoURI(videoUri)
+            }
+            5 -> {
+                val videoFrag = arguments?.getString("file5")
+                val videoUri = Uri.parse(videoFrag)
+                binding.romTitle.text = arguments?.getString("rom_title5")
                 binding.vvRomEx.setVideoURI(videoUri)
             }
         }
