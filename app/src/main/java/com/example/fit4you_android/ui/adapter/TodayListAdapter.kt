@@ -3,7 +3,7 @@ package com.example.fit4you_android.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fit4you_android.data.TodayList
+import com.example.fit4you_android.data.model.TodayList
 import com.example.fit4you_android.databinding.ItemTodayListBinding
 import com.example.fit4you_android.ui.adapter.holder.TodayListViewHolder
 import com.example.fit4you_android.ui.view.today.TodayListFragment

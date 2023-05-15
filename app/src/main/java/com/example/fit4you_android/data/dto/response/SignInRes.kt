@@ -1,4 +1,4 @@
-package com.example.fit4you_android.data.model.response
+package com.example.fit4you_android.data.dto.response
 
 data class SignInRes(
     val code: Int,

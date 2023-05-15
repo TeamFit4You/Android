@@ -1,11 +1,11 @@
 package com.example.fit4you_android.data.api
 
-import com.example.fit4you_android.data.model.request.IsEmailDupReq
-import com.example.fit4you_android.data.model.request.IsNicknameDupReq
-import com.example.fit4you_android.data.model.request.SignUpReq
-import com.example.fit4you_android.data.model.response.IsEmailDupRes
-import com.example.fit4you_android.data.model.response.IsNicknameDupRes
-import com.example.fit4you_android.data.model.response.SignUpRes
+import com.example.fit4you_android.data.dto.request.IsEmailDupReq
+import com.example.fit4you_android.data.dto.request.IsNicknameDupReq
+import com.example.fit4you_android.data.dto.request.SignUpReq
+import com.example.fit4you_android.data.dto.response.IsEmailDupRes
+import com.example.fit4you_android.data.dto.response.IsNicknameDupRes
+import com.example.fit4you_android.data.dto.response.SignUpRes
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST

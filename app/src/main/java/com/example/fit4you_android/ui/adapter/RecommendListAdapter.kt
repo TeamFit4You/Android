@@ -3,7 +3,7 @@ package com.example.fit4you_android.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fit4you_android.data.RecommendData
+import com.example.fit4you_android.data.model.RecommendData
 import com.example.fit4you_android.databinding.ItemRecommendListBinding
 import com.example.fit4you_android.ui.adapter.holder.RecommendListViewHolder
 import com.example.fit4you_android.ui.view.recommend.RecommendListFragment

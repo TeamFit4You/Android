@@ -1,19 +1,11 @@
 package com.example.fit4you_android.ui.view.recommend
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.fit4you_android.R
-import com.example.fit4you_android.data.RecommendData
-import com.example.fit4you_android.data.TodayList
+import com.example.fit4you_android.data.model.RecommendData
 import com.example.fit4you_android.databinding.FragmentRecommendListBinding
 import com.example.fit4you_android.ui.adapter.RecommendListAdapter
-import com.example.fit4you_android.ui.adapter.TodayListAdapter
 import com.example.fit4you_android.ui.base.BaseFragment
-import com.example.fit4you_android.ui.view.today.TodayListViewModel
 import com.example.fit4you_android.util.MarginItemDecoration
 import kotlin.math.roundToInt
 

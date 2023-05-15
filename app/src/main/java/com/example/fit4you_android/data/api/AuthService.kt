@@ -1,8 +1,8 @@
 package com.example.fit4you_android.data.api
 
-import com.example.fit4you_android.data.model.request.SignInReq
-import com.example.fit4you_android.data.model.response.RefreshTokenRes
-import com.example.fit4you_android.data.model.response.SignInRes
+import com.example.fit4you_android.data.dto.request.SignInReq
+import com.example.fit4you_android.data.dto.response.RefreshTokenRes
+import com.example.fit4you_android.data.dto.response.SignInRes
 import retrofit2.Call
 import retrofit2.http.*
 
