@@ -79,6 +79,8 @@
     <string name="notice_2_1_2">2) 차렷자세에서 귀까지 옆으로 팔 올리기\n(측면촬영)</string>
     <string name="notice_2_2_1">3) 팔꿈치를 어깨와 나란히 하고 팔 하단을 수직으로 움직이기\n(정면촬영)</string>
     <string name="notice_2_2_2">4) 팔꿈치를 어깨와 나란히 하고 팔 하단을 수직으로 움직이기\n(측면촬영)</string>
+    <string name="notice_2_3_1">5) 대충 어떤 부위에 대한 테스트인지 안내하는 문구~~~~\n(정면촬영)</string>
+    <string name="notice_2_3_2">6) 대충대충 어떤 부위에 대한 테스트인지 안내하는 문구~~~22\n(측면촬영)</string>
     <string name="notice_3">먼저 전문가의 영상을 시청하고,\n사용자의 영상을 촬영한 뒤,\n통증 정도에 대해 체크해주세요.</string>
 
     <!-- Rom Example -->
@@ -91,7 +93,7 @@
     <string name="timer">3</string>
 
     <!-- Rom Vas -->
-    <string name="vas_request">방금 실시한 검사 후에 느껴지는 통즈의 정도는 어떠한가요?</string>
+    <string name="vas_request">방금 실시한 검사 후에 느껴지는 통증의 정도는 어떠한가요?</string>
 
     <!-- User Pain Fragment -->
     <string name="pain_request">해당하는 주요 통증 부위에 \n 모두 체크해주세요.</string>

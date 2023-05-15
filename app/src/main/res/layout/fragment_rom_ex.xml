@@ -26,7 +26,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/romex_ex"
+                android:id="@+id/rom_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -43,7 +43,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/romex_note"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/romex_ex" />
+                app:layout_constraintTop_toBottomOf="@id/rom_title" />
 
             <ScrollView
                 android:id="@+id/romex_note"
