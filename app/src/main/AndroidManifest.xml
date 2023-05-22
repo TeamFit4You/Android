@@ -24,7 +24,10 @@
         android:theme="@style/Theme.Fit4YouAndroid"
         tools:targetApi="31">
         <activity
-            android:name=".RecomInfoActivity"
+            android:name=".ui.view.recommend.info.RecomExpertActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.recommend.info.RecomInfoActivity"
             android:exported="false" />
         <activity
             android:name=".ui.view.signup.SignupActivity"
