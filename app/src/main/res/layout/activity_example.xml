@@ -45,14 +45,14 @@
             android:id="@+id/vv_today_ex"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/seek_bar_today"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_examtitle"
-            app:layout_constraintBottom_toTopOf="@+id/seek_bar_today"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_examtitle" />
 
         <androidx.appcompat.widget.AppCompatSeekBar
             android:id="@+id/seek_bar_today"
@@ -92,34 +92,34 @@
             android:id="@+id/tv_today_notice"
             android:layout_width="0dp"
             android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
             android:text="@string/today_notice"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:gravity="center_vertical"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/rv_today_notice"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/rv_today_notice"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_today_notice"
             android:layout_width="0dp"
             android:layout_height="100dp"
-            android:layout_marginBottom="10dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_exam_prev"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/btn_exam_prev"/>-->
+        <!--        <View-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginBottom="10dp"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/btn_exam_prev"/>-->
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_exam_prev"
@@ -141,7 +141,7 @@
             android:layout_height="40dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/round_corner_do_login"
-            android:text="@string/prev"
+            android:text="@string/next"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"

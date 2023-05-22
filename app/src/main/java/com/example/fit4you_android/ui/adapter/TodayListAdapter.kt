@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fit4you_android.data.model.TodayList
 import com.example.fit4you_android.databinding.ItemTodayListBinding
+import com.example.fit4you_android.ui.adapter.ClickListener.OnTodayItemClickListener
 import com.example.fit4you_android.ui.adapter.holder.TodayListViewHolder
 import com.example.fit4you_android.ui.view.today.TodayListFragment
 import com.example.fit4you_android.ui.view.today.TodayListViewModel
@@ -12,7 +13,8 @@ import com.example.fit4you_android.ui.view.today.TodayListViewModel
 class TodayListAdapter(
     private val context: TodayListFragment,
     private val todayListViewModel: TodayListViewModel,
-    private val lists: List<TodayList>
+    private val lists: List<TodayList>,
+    private val listener: OnTodayItemClickListener
 ): RecyclerView.Adapter<TodayListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayListViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -22,6 +24,9 @@ class TodayListAdapter(
 
     override fun onBindViewHolder(holder: TodayListViewHolder, position: Int) {
         holder.binding.listPart.text = lists[position].bodyPart
+        holder.itemView.setOnClickListener {
+            listener.onTodayItemClick(lists[position])
+        }
         holder.bind(lists[position])
     }
 

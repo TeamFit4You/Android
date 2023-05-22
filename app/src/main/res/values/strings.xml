@@ -152,6 +152,10 @@
     <string name="today_list_ex5">어찌됐던 이름이 긴 부위</string>
     <string name="today_list_go">Go!</string>
     <string name="today_notice">주의사항!</string>
+    <string name="today_self_set1">1세트</string>
+    <string name="today_self_set2">2세트</string>
+    <string name="today_self_set3">3세트</string>
+    <string name="today_timer">5</string>
 
     <!-- Start Package -->
     <string name="exam_title"> 운동하기</string>
