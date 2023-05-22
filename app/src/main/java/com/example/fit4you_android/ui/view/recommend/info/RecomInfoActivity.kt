@@ -1,7 +1,5 @@
 package com.example.fit4you_android.ui.view.recommend.info
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.activity.viewModels
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.ActivityRecomInfoBinding
