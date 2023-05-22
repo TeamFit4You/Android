@@ -1,23 +1,20 @@
 package com.example.fit4you_android.ui.view.recommend
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import com.example.fit4you_android.R
-import com.example.fit4you_android.data.RecommendData
-import com.example.fit4you_android.data.TodayList
+import com.example.fit4you_android.data.model.RecommendData
 import com.example.fit4you_android.databinding.FragmentRecommendListBinding
+import com.example.fit4you_android.ui.adapter.ClickListener.OnRecomItemClickListener
 import com.example.fit4you_android.ui.adapter.RecommendListAdapter
-import com.example.fit4you_android.ui.adapter.TodayListAdapter
 import com.example.fit4you_android.ui.base.BaseFragment
-import com.example.fit4you_android.ui.view.today.TodayListViewModel
+import com.example.fit4you_android.ui.view.recommend.info.RecomInfoActivity
+import com.example.fit4you_android.ui.view.today.start.ExampleActivity
 import com.example.fit4you_android.util.MarginItemDecoration
 import kotlin.math.roundToInt
 
-class RecommendListFragment : BaseFragment<FragmentRecommendListBinding, RecommendListViewModel>() {
+class RecommendListFragment : BaseFragment<FragmentRecommendListBinding, RecommendListViewModel>(),
+    OnRecomItemClickListener {
     override val layoutResourceId: Int
         get() = R.layout.fragment_recommend_list
     override val viewModel: RecommendListViewModel by viewModels()
@@ -33,57 +30,28 @@ class RecommendListFragment : BaseFragment<FragmentRecommendListBinding, Recomme
 
     override fun initView() {
         val datatemp = arrayListOf(
-            RecommendData(
-                resources.getString(R.string.today_list_ex1),
-                resources.getString(R.string.recom_spec1_1),
-                resources.getString(R.string.recom_spec1_2),
-                resources.getString(R.string.recom_spec1_3)
-            ),
-            RecommendData(
-                resources.getString(R.string.today_list_ex2),
-                resources.getString(R.string.recom_spec2_1),
-                resources.getString(R.string.recom_spec2_2),
-                resources.getString(R.string.recom_spec2_3)
-            ),
-            RecommendData(
-                resources.getString(R.string.today_list_ex3),
-                resources.getString(R.string.recom_spec1_1),
-                resources.getString(R.string.recom_spec1_2),
-                resources.getString(R.string.recom_spec1_3)
-            ),
-            RecommendData(
-                resources.getString(R.string.today_list_ex4),
-                resources.getString(R.string.recom_spec2_1),
-                resources.getString(R.string.recom_spec2_2),
-                resources.getString(R.string.recom_spec2_3)
-            ),
-            RecommendData(
-                resources.getString(R.string.today_list_ex3),
-                resources.getString(R.string.recom_spec1_1),
-                resources.getString(R.string.recom_spec1_2),
-                resources.getString(R.string.recom_spec1_3)
-            ),
-            RecommendData(
-                resources.getString(R.string.today_list_ex3),
-                resources.getString(R.string.recom_spec1_1),
-                resources.getString(R.string.recom_spec1_2),
-                resources.getString(R.string.recom_spec1_3)
-            ),
-            RecommendData(
-                resources.getString(R.string.today_list_ex4),
-                resources.getString(R.string.recom_spec2_1),
-                resources.getString(R.string.recom_spec2_2),
-                resources.getString(R.string.recom_spec2_3)
-            )
+            RecommendData(resources.getString(R.string.today_list_ex1)),
+            RecommendData(resources.getString(R.string.today_list_ex2)),
+            RecommendData(resources.getString(R.string.today_list_ex3)),
+            RecommendData(resources.getString(R.string.today_list_ex4)),
+            RecommendData(resources.getString(R.string.today_list_ex3)),
+            RecommendData(resources.getString(R.string.today_list_ex3)),
+            RecommendData(resources.getString(R.string.today_list_ex4))
         )
         bindRVTodayListData(lists = datatemp)
+    }
+
+    override fun onRecomItemClick(item: RecommendData) {
+        val intent = Intent(requireActivity(), RecomInfoActivity::class.java)
+        intent.putExtra("key", item.bodyPart)
+        startActivity(intent)
     }
 
     private fun bindRVTodayListData(lists: ArrayList<RecommendData>) {
         val spaceDecoration = MarginItemDecoration(
             resources.getDimension(R.dimen.today_bottom_space).roundToInt()
         )
-        adapter = RecommendListAdapter(this, viewModel, lists)
+        adapter = RecommendListAdapter(this, viewModel, lists, this)
         binding.rvRecomList.adapter = adapter
         binding.rvRecomList.addItemDecoration(spaceDecoration)
     }

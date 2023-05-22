@@ -1,12 +1,36 @@
 package com.example.fit4you_android.ui.view.today.start
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.content.Intent
+import androidx.activity.viewModels
 import com.example.fit4you_android.R
+import com.example.fit4you_android.databinding.ActivitySelfBinding
+import com.example.fit4you_android.ui.base.BaseActivity
 
-class SelfActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_self)
+class SelfActivity : BaseActivity<ActivitySelfBinding, SelfViewModel>() {
+    override val layoutResourceId: Int
+        get() = R.layout.activity_self
+    override val viewModel: SelfViewModel by viewModels()
+
+    override fun initBeforeBinding() {
+
+    }
+
+    override fun initAfterBinding() {
+
+    }
+
+    override fun initView() {
+        val bodyPart = intent.getStringExtra("key")
+        binding.tbSelfPart.text = bodyPart
+
+        binding.btnSelfPrev.setOnClickListener {
+            val intent = Intent(this, ExampleActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.btnSelfNext.setOnClickListener {
+
+        }
     }
 }

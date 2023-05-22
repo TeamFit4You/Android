@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import com.example.fit4you_android.R
 import com.example.fit4you_android.data.Resource
 import com.example.fit4you_android.data.error.EMAIL_OR_PASSWORD_ERROR
-import com.example.fit4you_android.data.model.response.SignInRes
+import com.example.fit4you_android.data.dto.response.SignInRes
 import com.example.fit4you_android.databinding.ActivityLoginBinding
 import com.example.fit4you_android.ui.base.BaseActivity
 import com.example.fit4you_android.ui.view.basicstatuscheck.BaseBasicQuestionActivity

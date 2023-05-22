@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.fit4you_android.data.Resource
-import com.example.fit4you_android.data.model.request.SignInReq
-import com.example.fit4you_android.data.model.response.SignInRes
+import com.example.fit4you_android.data.dto.request.SignInReq
+import com.example.fit4you_android.data.dto.response.SignInRes
 import com.example.fit4you_android.data.repository.auth.AuthRepository
 import com.example.fit4you_android.ui.base.BaseViewModel
 import com.example.fit4you_android.util.SingleEvent

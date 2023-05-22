@@ -6,9 +6,9 @@ import androidx.activity.viewModels
 import androidx.lifecycle.LiveData
 import com.example.fit4you_android.R
 import com.example.fit4you_android.data.Resource
-import com.example.fit4you_android.data.model.response.IsEmailDupRes
-import com.example.fit4you_android.data.model.response.IsNicknameDupRes
-import com.example.fit4you_android.data.model.response.SignUpRes
+import com.example.fit4you_android.data.dto.response.IsEmailDupRes
+import com.example.fit4you_android.data.dto.response.IsNicknameDupRes
+import com.example.fit4you_android.data.dto.response.SignUpRes
 import com.example.fit4you_android.databinding.ActivitySignupBinding
 import com.example.fit4you_android.ui.base.BaseActivity
 import com.example.fit4you_android.ui.view.login.LoginActivity
