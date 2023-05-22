@@ -76,10 +76,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     private fun initSignInBtn() {
         binding.btnDoLogin.setOnClickListener {
-//            postSignIn()
-            val intent = Intent(this, BaseBasicQuestionActivity::class.java)
-            startActivity(intent)
-            finish()
+            postSignIn()
+//            val intent = Intent(this, BaseBasicQuestionActivity::class.java)
+//            startActivity(intent)
+//            finish()
         }
     }
 
