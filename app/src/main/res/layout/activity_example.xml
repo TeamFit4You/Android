@@ -41,11 +41,91 @@
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
+        <VideoView
+            android:id="@+id/vv_today_ex"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_examtitle"
+            app:layout_constraintBottom_toTopOf="@+id/seek_bar_today"/>
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/seek_bar_today"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:max="100"
+            android:progress="0"
+            app:layout_constraintBottom_toTopOf="@id/layout_today_control"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layout_today_control"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/tv_today_notice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_today_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Play" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_today_pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pause" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_today_notice"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:text="@string/today_notice"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/rv_today_notice"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_today_notice"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_exam_prev"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/btn_exam_prev"/>-->
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_exam_prev"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/round_corner_do_login"
             android:text="@string/prev"
             android:textColor="@color/white"
@@ -57,9 +137,9 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_exam_next"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/round_corner_do_login"
             android:text="@string/prev"
             android:textColor="@color/white"
