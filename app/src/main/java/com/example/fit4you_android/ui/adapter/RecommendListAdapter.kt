@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fit4you_android.data.model.RecommendData
 import com.example.fit4you_android.databinding.ItemRecommendListBinding
+import com.example.fit4you_android.ui.adapter.ClickListener.OnRecomItemClickListener
 import com.example.fit4you_android.ui.adapter.holder.RecommendListViewHolder
 import com.example.fit4you_android.ui.view.recommend.RecommendListFragment
 import com.example.fit4you_android.ui.view.recommend.RecommendListViewModel
@@ -12,7 +13,8 @@ import com.example.fit4you_android.ui.view.recommend.RecommendListViewModel
 class RecommendListAdapter(
     private val context: RecommendListFragment,
     private val recommendListViewModel: RecommendListViewModel,
-    private val lists: List<RecommendData>
+    private val lists: List<RecommendData>,
+    private val listener: OnRecomItemClickListener
 ): RecyclerView.Adapter<RecommendListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendListViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -21,10 +23,10 @@ class RecommendListAdapter(
     }
 
     override fun onBindViewHolder(holder: RecommendListViewHolder, position: Int) {
-        holder.binding.recomPart.text = lists[position].bodyPart
-        holder.binding.recomSpec1.text = lists[position].spec1
-        holder.binding.recomSpec2.text = lists[position].spec2
-        holder.binding.recomSpec3.text = lists[position].spec3
+        holder.binding.listPart.text = lists[position].bodyPart
+        holder.itemView.setOnClickListener {
+            listener.onRecomItemClick(lists[position])
+        }
         holder.bind(lists[position])
     }
 
