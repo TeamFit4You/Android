@@ -6,7 +6,9 @@ import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.ActivityExampleBinding
 import com.example.fit4you_android.ui.base.BaseActivity
 import com.example.fit4you_android.ui.view.today.TodayActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ExampleActivity : BaseActivity<ActivityExampleBinding, ExampleViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_example

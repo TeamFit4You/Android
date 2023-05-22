@@ -5,7 +5,9 @@ import androidx.activity.viewModels
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.ActivitySelfBinding
 import com.example.fit4you_android.ui.base.BaseActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SelfActivity : BaseActivity<ActivitySelfBinding, SelfViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_self

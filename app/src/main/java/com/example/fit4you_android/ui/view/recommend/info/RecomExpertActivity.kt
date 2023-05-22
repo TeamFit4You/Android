@@ -4,7 +4,9 @@ import androidx.activity.viewModels
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.ActivityRecomExpertBinding
 import com.example.fit4you_android.ui.base.BaseActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RecomExpertActivity : BaseActivity<ActivityRecomExpertBinding, RecomExpertViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_recom_expert
