@@ -71,7 +71,8 @@ class SelfActivity : BaseActivity<ActivitySelfBinding, SelfViewModel>() {
 //        }
 
         binding.btnSelfNext.setOnClickListener {
-
+            val intent = Intent(this, ResultActivity::class.java)
+            startActivity(intent)
         }
     }
 

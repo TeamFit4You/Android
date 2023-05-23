@@ -169,7 +169,9 @@
         반동을 주며 횟수를 많이 하는 것은 운동 효과에 도움이 되지 않으며, 천천히 바른 자세로 제대로 하는 것이 중요합니다.\n
     </string>
 
-    <!-- Record Activity & Fragment -->
+    <!-- Result Activity & Fragment -->
+    <string name="result_setN">1세트</string>
+    <string name="result_feedBack">동해물과백두산이마르고닳도록\n하느님이보우하사니맘대로하세\n스쿼드에서 가쟝 중요한것은엉덩이를 나줬다가 일어나는 동작에서\nasdflasdfasfasdfasdf</string>
 
     <!-- Today Activity & Fragment -->
     <string name="today_list_ex1">목</string>

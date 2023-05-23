@@ -9,7 +9,6 @@ import com.example.fit4you_android.ui.adapter.ClickListener.OnRecomItemClickList
 import com.example.fit4you_android.ui.adapter.RecommendListAdapter
 import com.example.fit4you_android.ui.base.BaseFragment
 import com.example.fit4you_android.ui.view.recommend.info.RecomInfoActivity
-import com.example.fit4you_android.ui.view.today.start.ExampleActivity
 import com.example.fit4you_android.util.MarginItemDecoration
 import kotlin.math.roundToInt
 
