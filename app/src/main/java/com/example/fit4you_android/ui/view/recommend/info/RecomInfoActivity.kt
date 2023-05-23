@@ -1,5 +1,6 @@
 package com.example.fit4you_android.ui.view.recommend.info
 
+import android.content.Intent
 import androidx.activity.viewModels
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.ActivityRecomInfoBinding
@@ -21,6 +22,9 @@ class RecomInfoActivity : BaseActivity<ActivityRecomInfoBinding, RecomInfoViewMo
     }
 
     override fun initView() {
-
+        binding.btnRecomInfoNext.setOnClickListener {
+            val intent = Intent(this, RecomExpertActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

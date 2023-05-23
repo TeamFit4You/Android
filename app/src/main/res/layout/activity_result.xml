@@ -29,7 +29,7 @@
                     android:text="@string/result_title"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -37,49 +37,48 @@
             android:id="@+id/bodypart"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/result_bodypart"
-            android:textSize="20sp"
-            android:textColor="@color/black"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/round_corner_color1"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
             android:paddingStart="10dp"
+            android:paddingTop="5dp"
             android:paddingEnd="10dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="30dp"
+            android:paddingBottom="5dp"
+            android:text="@string/result_bodypart"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_resulttitle"/>
+            app:layout_constraintTop_toBottomOf="@+id/tb_resulttitle" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/today_list_ex4"
-            android:textSize="20sp"
-            android:textColor="@color/black"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/round_corner_color2"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
             android:paddingStart="10dp"
+            android:paddingTop="5dp"
             android:paddingEnd="10dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="13dp"
-            app:layout_constraintTop_toBottomOf="@+id/tb_resulttitle"
-            app:layout_constraintStart_toEndOf="@+id/bodypart"/>
+            android:paddingBottom="5dp"
+            android:text="@string/today_list_ex4"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/bodypart"
+            app:layout_constraintTop_toBottomOf="@+id/tb_resulttitle" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_exam_prev"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:background="@drawable/round_corner_do_login"
-            android:text="@string/prev"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_result"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/bodypart" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

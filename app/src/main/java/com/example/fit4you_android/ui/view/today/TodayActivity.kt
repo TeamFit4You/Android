@@ -29,10 +29,10 @@ class TodayActivity : BaseActivity<ActivityTodayBinding, TodayViewModel>() {
             .replace(R.id.today_frag, listFrag)
             .commit()
 
-        binding.btnTodayPrev.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        binding.btnTodayPrev.setOnClickListener {
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
     }
 }
