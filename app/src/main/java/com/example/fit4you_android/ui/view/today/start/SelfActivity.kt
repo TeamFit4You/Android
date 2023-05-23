@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.MediaPlayer
 import android.os.Build
 import android.os.CountDownTimer
 import android.provider.MediaStore
@@ -77,13 +78,16 @@ class SelfActivity : BaseActivity<ActivitySelfBinding, SelfViewModel>() {
     }
 
     private fun videoStartOrStop() {
-        if (recording != null) {
-            stopVideo()
-            binding.tvTodayTimer.toVisible()
-        } else {
+        if (recording != null) {    // 녹화중이면 stop
+//            stopVideo()
+            return
+        } else {        // 아니면 start
             startTimer()
         }
     }
+
+    private var soundCount = 0
+    private var mediaPlayer: MediaPlayer? = null
 
     private fun startTimer() {
         timer?.cancel()
@@ -107,7 +111,10 @@ class SelfActivity : BaseActivity<ActivitySelfBinding, SelfViewModel>() {
     private fun stopVideo() {
         timer?.cancel()
         recording?.stop()
+        mediaPlayer?.stop()
         recording = null
+        binding.tvTodayTimer.toVisible()
+        soundCount = 0
     }
 
     // 비디오 캡쳐 메소드
@@ -155,12 +162,40 @@ class SelfActivity : BaseActivity<ActivitySelfBinding, SelfViewModel>() {
                 }
             }
             .start(ContextCompat.getMainExecutor(this)) { recordEvent ->
+                Log.d("recordEvent","$recording")
                 when (recordEvent) {
                     is VideoRecordEvent.Start -> {
                         binding.btnSelfStart.apply {
                             text = getString(R.string.stop_capture)
                             isEnabled = true
                         }
+                        // 비디오 캡쳐 시작 후, 8~9초마다 사운드 재생
+                        timer?.cancel()
+                        timer = object : CountDownTimer(35000, 9000) { // 10초 총 시간, 9초마다 onTick 호출
+                            override fun onTick(millisUnilFinished: Long) {
+                                if (soundCount < 3) {  // 10번 반복
+                                    // 사운드 재생
+                                    mediaPlayer =
+                                        MediaPlayer.create(this@SelfActivity, R.raw.cnt_sound)
+                                    mediaPlayer?.start()
+                                    soundCount++
+                                    Log.d("countT","$soundCount")
+                                } else {
+                                    Log.d("countT","Stop Video")
+                                    // 끝나는 사운드 재생
+                                    mediaPlayer =
+                                        MediaPlayer.create(this@SelfActivity, R.raw.cnt_sound)
+                                    mediaPlayer?.start()
+                                    // 10번 반복 후 촬영 종료
+                                    stopVideo()
+                                }
+                            }
+
+                            override fun onFinish() {
+
+                            }
+                        }
+                        timer?.start()
                     }
                     is VideoRecordEvent.Finalize -> {
                         if (!recordEvent.hasError()) {
@@ -180,6 +215,8 @@ class SelfActivity : BaseActivity<ActivitySelfBinding, SelfViewModel>() {
                             text = getString(R.string.start_capture)
                             isEnabled = true
                         }
+                        recording?.close()
+                        recording = null
                     }
                 }
             }
