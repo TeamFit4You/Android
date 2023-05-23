@@ -29,10 +29,10 @@ class RecommendActivity : BaseActivity<ActivityRecommendBinding, RecommendViewMo
             .replace(R.id.recom_frag, listFrag)
             .commit()
 
-        binding.btnRecomPrev.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        binding.btnRecomPrev.setOnClickListener {
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
     }
 }

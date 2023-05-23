@@ -8,7 +8,6 @@ import com.example.fit4you_android.R
 import com.example.fit4you_android.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 
-@HiltViewModel
 class RomExViewModel : BaseViewModel() {
     private val _videoUri = MutableLiveData<Uri>()
     val videoUri: LiveData<Uri>

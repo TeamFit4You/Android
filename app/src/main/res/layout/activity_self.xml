@@ -115,19 +115,19 @@
 
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_self_prev"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/round_corner_do_login"
-            android:text="@string/prev"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_self_start"
-            app:layout_constraintStart_toStartOf="parent" />
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/btn_self_prev"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            android:background="@drawable/round_corner_do_login"-->
+<!--            android:text="@string/prev"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="15sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/btn_self_start"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_self_start"
@@ -141,7 +141,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btn_self_next"
-            app:layout_constraintStart_toEndOf="@+id/btn_self_prev" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_self_next"
