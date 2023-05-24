@@ -171,7 +171,16 @@
 
     <!-- Result Activity & Fragment -->
     <string name="result_setN">1세트</string>
-    <string name="result_feedBack">동해물과백두산이마르고닳도록\n하느님이보우하사니맘대로하세\n스쿼드에서 가쟝 중요한것은엉덩이를 나줬다가 일어나는 동작에서\nasdflasdfasfasdfasdf</string>
+    <string name="result_totalAC">90</string>
+    <string name="result_countOne">1</string>
+    <string name="result_countTwo">2</string>
+    <string name="result_countThr">3</string>
+    <string name="result_accOne">50.23</string>
+    <string name="result_accTwo">70.3</string>
+    <string name="result_accThr">20.5</string>
+    <string name="result_feedOne">one - asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf</string>
+    <string name="result_feedTwo">two - asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf</string>
+    <string name="result_feedThr">three - asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf</string>
 
     <!-- Today Activity & Fragment -->
     <string name="today_list_ex1">목</string>

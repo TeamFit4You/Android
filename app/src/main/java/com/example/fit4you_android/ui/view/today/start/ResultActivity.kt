@@ -26,17 +26,44 @@ class ResultActivity : BaseActivity<ActivityResultBinding, ResultViewModel>() {
     override fun initView() {
         val datatemp = arrayListOf(
             FitResult(
-                resources.getString(R.string.result_setN),
-                resources.getString(R.string.result_feedBack)
+                "1세트",
+                80.3,
+                1,
+                2,
+                3,
+                20.5,
+                60.8,
+                40.9,
+                resources.getString(R.string.result_feedOne),
+                resources.getString(R.string.result_feedTwo),
+                resources.getString(R.string.result_feedThr)
             ),
             FitResult(
-                resources.getString(R.string.result_setN),
-                resources.getString(R.string.result_feedBack)
+                "2세트",
+                80.3,
+                1,
+                2,
+                3,
+                20.5,
+                60.8,
+                40.9,
+                resources.getString(R.string.result_feedOne),
+                resources.getString(R.string.result_feedTwo),
+                resources.getString(R.string.result_feedThr)
             ),
             FitResult(
-                resources.getString(R.string.result_setN),
-                resources.getString(R.string.result_feedBack)
-            )
+                "3세트",
+                80.3,
+                1,
+                2,
+                3,
+                20.5,
+                60.8,
+                40.9,
+                resources.getString(R.string.result_feedOne),
+                resources.getString(R.string.result_feedTwo),
+                resources.getString(R.string.result_feedThr)
+            ),
         )
         bindRVTodayListData(lists = datatemp)
     }
