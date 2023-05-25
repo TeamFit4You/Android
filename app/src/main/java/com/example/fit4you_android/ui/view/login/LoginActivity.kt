@@ -72,13 +72,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     private fun initSignInBtn() {
         binding.btnDoLogin.setOnClickListener {
             postSignIn()
-//            val intent = Intent(this, BaseBasicQuestionActivity::class.java)
-//            startActivity(intent)
-//            finish()
         }
     }
 
     private fun postSignIn() {
-        viewModel.doSignIn(binding.etId.text.toString(), binding.etPassword.text.toString())
+//        viewModel.doSignIn(binding.etId.text.toString(), binding.etPassword.text.toString())
+        viewModel.doSignIn("test@email.com", "testPassword123")
     }
 }
