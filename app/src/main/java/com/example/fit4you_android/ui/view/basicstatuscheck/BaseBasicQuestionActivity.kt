@@ -7,9 +7,12 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.compose.ui.res.stringArrayResource
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import com.example.fit4you_android.ui.view.MainActivity
 import androidx.lifecycle.Observer
 import com.example.fit4you_android.R
+import com.example.fit4you_android.data.Resource
+import com.example.fit4you_android.data.dto.response.BaseQuestionRes
 import com.example.fit4you_android.databinding.ActivityBaseBasicQuestionBinding
 import com.example.fit4you_android.ui.base.BaseActivity
 import com.example.fit4you_android.ui.view.basicstatuscheck.notice.RomNoticeFragment
@@ -19,6 +22,8 @@ import com.example.fit4you_android.ui.view.basicstatuscheck.posetest.UserRomFrag
 import com.example.fit4you_android.ui.view.basicstatuscheck.posetest.UserVasFragment
 import com.example.fit4you_android.ui.view.basicstatuscheck.questions.UserHistoryFragment
 import com.example.fit4you_android.ui.view.basicstatuscheck.questions.UserPainFragment
+import com.example.fit4you_android.util.*
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,10 +48,13 @@ class BaseBasicQuestionActivity :
     }
 
     override fun initAfterBinding() {
-
+        observeViewModel()
     }
 
     override fun initView() {
+        val email = intent.getStringExtra("email")
+        Log.d("email", "$email")
+        viewModel.setEmail(email!!)
         val physicalFrag = PhysicalFragment()
         val historyFrag = UserHistoryFragment()
         val painFrag = UserPainFragment()
@@ -80,12 +88,58 @@ class BaseBasicQuestionActivity :
                 // 6, 9, 12, 15, 18, 21
                 in 6..22 step 3 -> updateFragment(vasFrag, binding.pbBasic.progress + 1)
                 else -> {
-//                    Log.d("basequesion",viewModel.survey.value.toString())
-                    Log.d("basequesion",viewModel.baseQuestionReq.value.toString())
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
+//                    viewModel.setValue()
+                    Log.d("basequesion", viewModel.baseQuestionReq.value.toString())
+                    val emailR = viewModel.baseQuestionReq.value?.email
+                    val hist = viewModel.baseQuestionReq.value?.hist
+                    val vas1 = viewModel.baseQuestionReq.value?.neck
+                    val vas2 = viewModel.baseQuestionReq.value?.shoulder
+                    val vas3 = viewModel.baseQuestionReq.value?.lumbar
+                    val vas4 = viewModel.baseQuestionReq.value?.wrist
+                    val vas5 = viewModel.baseQuestionReq.value?.elbow
+                    val vas6 = viewModel.baseQuestionReq.value?.knee
+                    viewModel.postQuestion(
+                        emailR!!,
+                        hist!!,
+                        vas2!!,
+                        vas3!!,
+                        vas4!!,
+                        vas5!!,
+                        vas6!!,
+                        vas1!!
+                    )
                 }
+            }
+        }
+    }
+
+    private fun observeViewModel() {
+        observe(viewModel.survey, ::handleSurveyResult)
+        observeToast(viewModel.showToast)
+    }
+
+    private fun observeToast(event: LiveData<SingleEvent<Any>>) {
+        binding.root.showToast(this, event, Snackbar.LENGTH_LONG)
+    }
+
+    private fun handleSurveyResult(status: Resource<BaseQuestionRes>) {
+        Log.d("status","$status")
+        when (status) {
+            is Resource.Loading -> {
+                binding.lottieQuestion.toVisible()
+                binding.lottieQuestion.playAnimation()
+            }
+            is Resource.Success -> status.data.let {
+                binding.lottieQuestion.pauseAnimation()
+                binding.lottieQuestion.toGone()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            is Resource.Error -> {
+                binding.lottieQuestion.pauseAnimation()
+                binding.lottieQuestion.toGone()
+                viewModel.showToastMessage(status.message)
             }
         }
     }

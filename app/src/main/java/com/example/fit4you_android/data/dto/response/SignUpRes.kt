@@ -1,15 +1,5 @@
 package com.example.fit4you_android.data.dto.response
 
 data class SignUpRes(
-    val code: Int,
-    val result: String,
-    val message: String,
-    val data: Data,
-) {
-    data class Data(
-        val id: Long,
-        val email: String,
-        val password: String,
-        val nickname: String,
-    )
-}
+    val code: Int
+)

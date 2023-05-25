@@ -51,9 +51,9 @@ class UserHistoryFragment : BaseFragment<FragmentUserHistoryBinding, BaseBasicQu
         val currentReq = viewModel.baseQuestionReq.value!!
 //        val currentReq = viewModel.survey.value
         if (isChecked) {
-            currentReq.diag = currentReq.diag?.plus(value)
+            currentReq.hist = currentReq.hist + value
         } else {
-            currentReq.diag = currentReq.diag?.filter { it != value }
+            currentReq.hist = currentReq.hist.filter { it != value }
         }
         viewModel.baseQuestionReq.value = currentReq
 //        viewModel.setValue(currentReq)

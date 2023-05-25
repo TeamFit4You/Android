@@ -37,32 +37,32 @@ class SignupViewModel @Inject constructor(private val userRepository: UserReposi
     val showToast: LiveData<SingleEvent<Any>>
         get() = _showToast
 
-    fun signUp(email: String, password: String, nickname: String) {
+    fun signUp(email: String, password: String) {
         viewModelScope.launch {
             _signUpProcess.value = Resource.Loading()
-            userRepository.signUp(body = SignUpReq(email, password, nickname)).collect {
+            userRepository.signUp(body = SignUpReq(email, password)).collect {
                 _signUpProcess.value = it
             }
         }
     }
 
-    fun isEmailDup(email: String) {
-        viewModelScope.launch {
-            _emailDupProcess.value = Resource.Loading()
-            userRepository.isEmailDup(body = IsEmailDupReq(email)).collect {
-                _emailDupProcess.value = it
-            }
-        }
-    }
+//    fun isEmailDup(email: String) {
+//        viewModelScope.launch {
+//            _emailDupProcess.value = Resource.Loading()
+//            userRepository.isEmailDup(body = IsEmailDupReq(email)).collect {
+//                _emailDupProcess.value = it
+//            }
+//        }
+//    }
 
-    fun isNicknameDup(nickname: String) {
-        viewModelScope.launch {
-            _nickDupProcess.value = Resource.Loading()
-            userRepository.isNicknameDup(body = IsNicknameDupReq(nickname)).collect {
-                _nickDupProcess.value = it
-            }
-        }
-    }
+//    fun isNicknameDup(nickname: String) {
+//        viewModelScope.launch {
+//            _nickDupProcess.value = Resource.Loading()
+//            userRepository.isNicknameDup(body = IsNicknameDupReq(nickname)).collect {
+//                _nickDupProcess.value = it
+//            }
+//        }
+//    }
 
     fun showToastMessage(errorCode: Int) {
         val error = errorManager.getError(errorCode)

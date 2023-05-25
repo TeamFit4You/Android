@@ -48,15 +48,21 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     private fun handleSignInResult(status: Resource<SignInRes>) {
         Log.d("SignIn",status.toString())
         when(status){
-            is Resource.Loading -> binding.pbLoginLoaderView.toVisible()
+            is Resource.Loading -> {
+                binding.lottieLogin.toVisible()
+                binding.lottieLogin.playAnimation()
+            }
             is Resource.Success -> status.data.let {
-                binding.pbLoginLoaderView.toGone()
+                binding.lottieLogin.pauseAnimation()
+                binding.lottieLogin.toGone()
                 val intent = Intent(this, BaseBasicQuestionActivity::class.java)
+                intent.putExtra("email",binding.etId.text.toString())
                 startActivity(intent)
                 finish()
             }
             is Resource.Error -> {
-                binding.pbLoginLoaderView.toGone()
+                binding.lottieLogin.pauseAnimation()
+                binding.lottieLogin.toGone()
                 viewModel.showToastMessage(status.message)
             }
         }
@@ -76,7 +82,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     }
 
     private fun postSignIn() {
-//        viewModel.doSignIn(binding.etId.text.toString(), binding.etPassword.text.toString())
-        viewModel.doSignIn("test@email.com", "testPassword123")
+        viewModel.doSignIn(binding.etId.text.toString(), binding.etPassword.text.toString())
+//        viewModel.doSignIn("test@email.com", "testPassword123")
     }
 }
