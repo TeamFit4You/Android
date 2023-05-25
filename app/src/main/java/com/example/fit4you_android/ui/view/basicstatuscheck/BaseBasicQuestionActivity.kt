@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.compose.ui.res.stringArrayResource
 import androidx.fragment.app.Fragment
 import com.example.fit4you_android.ui.view.MainActivity
 import androidx.lifecycle.Observer
@@ -56,7 +57,6 @@ class BaseBasicQuestionActivity :
 
         val baseVideoUri =
             Uri.parse("android.resource://" + this.packageName + "/")
-        val bundle = Bundle()
 
         supportFragmentManager
             .beginTransaction()
@@ -72,9 +72,7 @@ class BaseBasicQuestionActivity :
                 // 4, 7, 10, 13, 16, 19
                 in 4..21 step 3 -> updateRomFragment(
                     (binding.pbBasic.progress - 3) / 3,
-                    R.string.notice_2_1_1 + (binding.pbBasic.progress - 3) / 3,
                     romExFrag,
-                    bundle,
                     baseVideoUri.toString()
                 )
                 // 5, 8, 11, 14, 17, 20
@@ -82,6 +80,8 @@ class BaseBasicQuestionActivity :
                 // 6, 9, 12, 15, 18, 21
                 in 6..22 step 3 -> updateFragment(vasFrag, binding.pbBasic.progress + 1)
                 else -> {
+//                    Log.d("basequesion",viewModel.survey.value.toString())
+                    Log.d("basequesion",viewModel.baseQuestionReq.value.toString())
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -91,29 +91,41 @@ class BaseBasicQuestionActivity :
     }
 
     private fun updateFragment(frag: Fragment, progress: Int) {
+        val bundle = Bundle()
+        bundle.putInt("progress", progress)
+        frag.arguments = bundle
         supportFragmentManager.beginTransaction().replace(R.id.basic_frag, frag).commit()
         binding.pbBasic.setProgress(progress)
     }
 
     private fun updateRomFragment(
         index: Int,
-        titleId: Int,
-        romExFrag: RomExFragment,
-        bundle: Bundle,
+        romExFrag: Fragment,
         baseVideoUri: String
     ) {
+        val title = arrayListOf(
+            resources.getString(R.string.notice_2_1_1),
+            resources.getString(R.string.notice_2_1_2),
+            resources.getString(R.string.notice_2_2_1),
+            resources.getString(R.string.notice_2_2_2),
+            resources.getString(R.string.notice_2_3_1),
+            resources.getString(R.string.notice_2_3_2),
+        )
+        val bundle = Bundle()
         viewModel.setVideo(baseVideoUri, sample_video[index])
         bundle.putInt("idx", index)
-        bundle.putString("rom_title$index", resources.getString(titleId))
+        bundle.putString("rom_title$index", title[index])
         viewModel.videoUri.observe(this, Observer {
             bundle.putString("file$index", it.toString())
         })
         romExFrag.arguments = bundle
         Log.d("idx", "$index")
         if (index == 0) {
-            updateFragment(romExFrag, 5)
+            supportFragmentManager.beginTransaction().replace(R.id.basic_frag, romExFrag).commit()
+            binding.pbBasic.setProgress(5)
         } else {
-            updateFragment(romExFrag, index * 3 + 5)
+            supportFragmentManager.beginTransaction().replace(R.id.basic_frag, romExFrag).commit()
+            binding.pbBasic.setProgress(index * 3 + 5)
         }
     }
 }

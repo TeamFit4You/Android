@@ -6,16 +6,18 @@ import android.os.Looper
 import android.util.Log
 import android.widget.SeekBar
 import android.widget.VideoView
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.FragmentRomExBinding
 import com.example.fit4you_android.ui.base.BaseFragment
+import com.example.fit4you_android.ui.view.basicstatuscheck.BaseBasicQuestionViewModel
 
-class RomExFragment : BaseFragment<FragmentRomExBinding, RomExViewModel>() {
+class RomExFragment : BaseFragment<FragmentRomExBinding, BaseBasicQuestionViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_rom_ex
-    override val viewModel: RomExViewModel by viewModels()
+    override val viewModel: BaseBasicQuestionViewModel by activityViewModels()
 
     override fun initBeforeBinding() {
         binding.lifecycleOwner = this
@@ -42,9 +44,12 @@ class RomExFragment : BaseFragment<FragmentRomExBinding, RomExViewModel>() {
         Log.d("videoIdx", "$videoIdx")
         when (videoIdx) {
             0 -> {
-                val videoFrag = arguments?.getString("file0")
-                val videoUri = Uri.parse(videoFrag)
-                binding.romTitle.text = arguments?.getString("rom_title0")
+                val videoFrag = arguments?.getString("file$videoIdx")
+                val videoUri = if (videoFrag != null) Uri.parse(videoFrag) else null
+                val title = arguments?.getString("rom_title$videoIdx")
+                if (title != null) {
+                    binding.romTitle.text = title
+                }
                 binding.vvRomEx.setVideoURI(videoUri)
             }
             1 -> {
