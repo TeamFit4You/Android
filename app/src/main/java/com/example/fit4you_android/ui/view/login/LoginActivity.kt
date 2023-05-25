@@ -1,6 +1,7 @@
 package com.example.fit4you_android.ui.view.login
 
 import android.content.Intent
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.LiveData
 import com.example.fit4you_android.R
@@ -45,24 +46,18 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     }
 
     private fun handleSignInResult(status: Resource<SignInRes>) {
-        when (status) {
+        Log.d("SignIn",status.toString())
+        when(status){
             is Resource.Loading -> binding.pbLoginLoaderView.toVisible()
             is Resource.Success -> status.data.let {
                 binding.pbLoginLoaderView.toGone()
-                when (status.data.result) {
-                    "SUCCESS" -> {
-                        val intent = Intent(this, BaseBasicQuestionActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    }
-                    "FAIL" -> viewModel.showToastMessage(EMAIL_OR_PASSWORD_ERROR)
-                }
+                val intent = Intent(this, BaseBasicQuestionActivity::class.java)
+                startActivity(intent)
+                finish()
             }
             is Resource.Error -> {
                 binding.pbLoginLoaderView.toGone()
-                status.let {
-                    viewModel.showToastMessage(it.message)
-                }
+                viewModel.showToastMessage(status.message)
             }
         }
     }
@@ -76,10 +71,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     private fun initSignInBtn() {
         binding.btnDoLogin.setOnClickListener {
-//            postSignIn()
-            val intent = Intent(this, BaseBasicQuestionActivity::class.java)
-            startActivity(intent)
-            finish()
+            postSignIn()
+//            val intent = Intent(this, BaseBasicQuestionActivity::class.java)
+//            startActivity(intent)
+//            finish()
         }
     }
 
