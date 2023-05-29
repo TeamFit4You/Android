@@ -15,8 +15,6 @@ class RecommendActivity : BaseActivity<ActivityRecommendBinding, RecommendViewMo
         get() = R.layout.activity_recommend
     override val viewModel: RecommendViewModel by viewModels()
 
-    private val email = intent.getStringExtra("email")
-
     override fun initBeforeBinding() {
 
     }
@@ -26,6 +24,7 @@ class RecommendActivity : BaseActivity<ActivityRecommendBinding, RecommendViewMo
     }
 
     override fun initView() {
+        val email = intent.getStringExtra("email")
         val listFrag = RecommendListFragment()
         val bundle = Bundle()
         bundle.putString("email", email)

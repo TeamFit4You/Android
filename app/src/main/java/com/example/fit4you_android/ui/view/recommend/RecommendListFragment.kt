@@ -4,12 +4,15 @@ import android.content.Intent
 import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.lifecycleScope
+import com.example.fit4you_android.Fit4YouApp
 import com.example.fit4you_android.R
 import com.example.fit4you_android.data.Resource
 import com.example.fit4you_android.data.dto.request.RecomListReq
 import com.example.fit4you_android.data.dto.response.RecomListRes
 import com.example.fit4you_android.data.dto.response.TodayListRes
 import com.example.fit4you_android.data.model.RecommendData
+import com.example.fit4you_android.data.model.TodayList
 import com.example.fit4you_android.databinding.FragmentRecommendListBinding
 import com.example.fit4you_android.ui.adapter.ClickListener.OnRecomItemClickListener
 import com.example.fit4you_android.ui.adapter.RecommendListAdapter
@@ -17,8 +20,11 @@ import com.example.fit4you_android.ui.base.BaseFragment
 import com.example.fit4you_android.ui.view.recommend.info.RecomInfoActivity
 import com.example.fit4you_android.util.*
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
+@AndroidEntryPoint
 class RecommendListFragment : BaseFragment<FragmentRecommendListBinding, RecommendListViewModel>(),
     OnRecomItemClickListener {
     override val layoutResourceId: Int
@@ -35,12 +41,13 @@ class RecommendListFragment : BaseFragment<FragmentRecommendListBinding, Recomme
     }
 
     override fun initView() {
+        val token = Fit4YouApp.prefs.getString("accessToken", "")
         val email = arguments?.getString("email")
         if (email != null) {
             val recomList = RecomListReq(
                 email, "전체"
             )
-            viewModel.getRecomList(recomList)
+            viewModel.getRecomList(token, recomList)
         }
     }
 
@@ -48,12 +55,13 @@ class RecommendListFragment : BaseFragment<FragmentRecommendListBinding, Recomme
         observe(viewModel.recomList, ::handleRecomResult)
         observeToast(viewModel.showToast)
     }
+
     private fun observeToast(event: LiveData<SingleEvent<Any>>) {
         binding.root.showToast(this, event, Snackbar.LENGTH_LONG)
     }
 
     private fun handleRecomResult(status: Resource<List<RecomListRes>>) {
-        Log.d("ResponseData", "$status")
+        Log.d("ResponseData_recom", "$status")
         when (status) {
             is Resource.Loading -> {
                 binding.lottieToday.toVisible()
@@ -63,7 +71,8 @@ class RecommendListFragment : BaseFragment<FragmentRecommendListBinding, Recomme
                 binding.lottieToday.pauseAnimation()
                 binding.lottieToday.toGone()
 
-//                bindRVTodayListData(status.data.workouts)
+                val recomList = it.map { res -> RecommendData(res.diseaseName) }
+                bindRVTodayListData(recomList)
             }
             is Resource.Error -> {
                 Log.d("handleMenuResult", "실패!")
@@ -80,7 +89,7 @@ class RecommendListFragment : BaseFragment<FragmentRecommendListBinding, Recomme
         startActivity(intent)
     }
 
-    private fun bindRVTodayListData(lists: ArrayList<RecommendData>) {
+    private fun bindRVTodayListData(lists: List<RecommendData>) {
         val spaceDecoration = MarginItemDecoration(
             resources.getDimension(R.dimen.today_bottom_space).roundToInt()
         )

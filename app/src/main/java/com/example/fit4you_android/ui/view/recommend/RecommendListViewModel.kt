@@ -33,10 +33,10 @@ class RecommendListViewModel @Inject constructor(private val userRepository: Use
 
     }
 
-    fun getRecomList(list: RecomListReq) {
+    fun getRecomList(token: String, list: RecomListReq) {
         viewModelScope.launch {
             _recomList.value = Resource.Loading()
-            userRepository.getRecomList(list).collect{
+            userRepository.getRecomList(token, list).collect{
                 _recomList.value = it
             }
         }

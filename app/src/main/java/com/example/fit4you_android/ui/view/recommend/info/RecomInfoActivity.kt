@@ -22,6 +22,9 @@ class RecomInfoActivity : BaseActivity<ActivityRecomInfoBinding, RecomInfoViewMo
     }
 
     override fun initView() {
+        val bodyPart = intent.getStringExtra("key")
+        binding.tbRecomInfo.text = bodyPart
+
         binding.btnRecomInfoNext.setOnClickListener {
             val intent = Intent(this, RecomExpertActivity::class.java)
             startActivity(intent)
