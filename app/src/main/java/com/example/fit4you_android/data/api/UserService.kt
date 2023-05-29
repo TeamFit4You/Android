@@ -5,6 +5,7 @@ import com.example.fit4you_android.data.dto.response.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query as Query
@@ -23,13 +24,33 @@ interface UserService {
     fun postSurvey(@Body baseQuesionReq: BaseQuestionReq): Call<Unit>
 
     @GET("/trainings/recommend")
-    fun getTodayList(@Query("email") email: String): Call<TodayListRes>
+    fun getTodayList(
+        @Header("authorization") accessToken: String,
+        @Query("email") email: String
+    ): Call<TodayListRes>
+
+    @POST("/workouts/estimation/{workoutId}")
+    fun getEstimation(
+        @Header("authorization") accessToken: String,
+        @Path("workoutId") workoutId: Long,
+        @Query("file") file: String
+    ):Call<TodayEstiRes>
+
+//    @GET("/workouts/video/{workoutId}")
+//    fun getTodayVideo(
+//        @Header("authorization") accessToken: String,
+//        @Path("workoutId") workoutId: Long
+//    ): Call<>
 
     @GET("/workouts/info/{workoutId}")
-    fun getStringList(@Path("workoutId") workoutId: Long): Call<StringListRes>
+    fun getStringList(
+        @Header("authorization") accessToken: String,
+        @Path("workoutId") workoutId: Long
+    ): Call<StringListRes>
 
     @GET("/exercises")
     fun getRecomList(
+        @Header("authorization") accessToken: String,
         @Query("email") email: String,
         @Query("part") part: String
     ): Call<List<RecomListRes>>

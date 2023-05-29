@@ -38,21 +38,21 @@ class UserRepositoryImpl @Inject constructor(
         }.flowOn(ioDispatcher)
     }
 
-    override suspend fun getTodayList(query: String): Flow<Resource<TodayListRes>> {
+    override suspend fun getTodayList(token: String, query: String): Flow<Resource<TodayListRes>> {
         return flow<Resource<TodayListRes>> {
-            emit(remoteData.getTodayList(query))
+            emit(remoteData.getTodayList(token, query))
         }.flowOn(ioDispatcher)
     }
 
-    override suspend fun getRecomList(query: RecomListReq): Flow<Resource<List<RecomListRes>>> {
+    override suspend fun getRecomList(token: String, query: RecomListReq): Flow<Resource<List<RecomListRes>>> {
         return flow<Resource<List<RecomListRes>>> {
-            emit(remoteData.getRecomList(query))
+            emit(remoteData.getRecomList(token, query))
         }.flowOn(ioDispatcher)
     }
 
-    override suspend fun getTodayString(workoutId: Long): Flow<Resource<StringListRes>> {
+    override suspend fun getTodayString(token: String, workoutId: Long): Flow<Resource<StringListRes>> {
         return flow<Resource<StringListRes>> {
-            emit(remoteData.getTodayString(workoutId))
+            emit(remoteData.getTodayString(token, workoutId))
         }.flowOn(ioDispatcher)
     }
 }

@@ -10,7 +10,7 @@ interface UserRemoteDataSource {
     fun postIsNicknameDup(body: IsNicknameDupReq): Resource<IsNicknameDupRes>
     fun postIsEmailDup(body: IsEmailDupReq): Resource<IsEmailDupRes>
     fun postSurvey(body: BaseQuestionReq): Resource<Unit>
-    fun getTodayList(query: String): Resource<TodayListRes>
-    fun getRecomList(query: RecomListReq): Resource<List<RecomListRes>>
-    fun getTodayString(workoutId: Long):Resource<StringListRes>
+    fun getTodayList(token: String, query: String): Resource<TodayListRes>
+    fun getRecomList(token: String, query: RecomListReq): Resource<List<RecomListRes>>
+    fun getTodayString(token: String, workoutId: Long):Resource<StringListRes>
 }

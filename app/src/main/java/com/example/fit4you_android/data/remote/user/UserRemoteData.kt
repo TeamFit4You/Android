@@ -89,12 +89,12 @@ class UserRemoteData @Inject constructor(
         }
     }
 
-    override fun getTodayList(query: String): Resource<TodayListRes> {
+    override fun getTodayList(token: String, query: String): Resource<TodayListRes> {
         if (!networkConnectivity.isConnected()) {
             return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
         }
         return try {
-            val response = userService.getTodayList(query).execute()
+            val response = userService.getTodayList(token, query).execute()
             if (response.isSuccessful) {
                 val successResponse = response.body()
                 Resource.Success(successResponse!!)
@@ -108,12 +108,12 @@ class UserRemoteData @Inject constructor(
         }
     }
 
-    override fun getRecomList(query: RecomListReq): Resource<List<RecomListRes>> {
+    override fun getRecomList(token: String, query: RecomListReq): Resource<List<RecomListRes>> {
         if (!networkConnectivity.isConnected()) {
             return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
         }
         return try {
-            val response = userService.getRecomList(query.email, query.part).execute()
+            val response = userService.getRecomList(token, query.email, query.part).execute()
             if (response.isSuccessful) {
                 val successResponse = response.body()
                 Resource.Success(successResponse!!)
@@ -127,12 +127,12 @@ class UserRemoteData @Inject constructor(
         }
     }
 
-    override fun getTodayString(workoutId: Long): Resource<StringListRes> {
+    override fun getTodayString(token: String, workoutId: Long): Resource<StringListRes> {
         if (!networkConnectivity.isConnected()) {
             return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
         }
         return try {
-            val response = userService.getStringList(workoutId).execute()
+            val response = userService.getStringList(token, workoutId).execute()
             if (response.isSuccessful) {
                 val successResponse = response.body()
                 Resource.Success(successResponse!!)

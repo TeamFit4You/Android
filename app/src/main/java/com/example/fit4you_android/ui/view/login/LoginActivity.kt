@@ -4,11 +4,13 @@ import android.content.Intent
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.LiveData
+import com.example.fit4you_android.Fit4YouApp
 import com.example.fit4you_android.R
 import com.example.fit4you_android.data.Resource
 import com.example.fit4you_android.data.error.EMAIL_OR_PASSWORD_ERROR
 import com.example.fit4you_android.data.dto.response.SignInRes
 import com.example.fit4you_android.databinding.ActivityLoginBinding
+import com.example.fit4you_android.di.ACCESS_TOKEN
 import com.example.fit4you_android.ui.base.BaseActivity
 import com.example.fit4you_android.ui.view.basicstatuscheck.BaseBasicQuestionActivity
 import com.example.fit4you_android.ui.view.signup.SignupActivity
@@ -55,6 +57,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
             is Resource.Success -> status.data.let {
                 binding.lottieLogin.pauseAnimation()
                 binding.lottieLogin.toGone()
+                Fit4YouApp.prefs.setString("accessToken", status.data.authToken)
                 val intent = Intent(this, BaseBasicQuestionActivity::class.java)
                 intent.putExtra("email",binding.etId.text.toString())
                 startActivity(intent)
@@ -83,6 +86,5 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     private fun postSignIn() {
         viewModel.doSignIn(binding.etId.text.toString(), binding.etPassword.text.toString())
-//        viewModel.doSignIn("test@email.com", "testPassword123")
     }
 }

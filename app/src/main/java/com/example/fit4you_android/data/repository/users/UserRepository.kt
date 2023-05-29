@@ -11,7 +11,7 @@ interface UserRepository {
     suspend fun isNicknameDup(body: IsNicknameDupReq): Flow<Resource<IsNicknameDupRes>>
     suspend fun isEmailDup(body: IsEmailDupReq): Flow<Resource<IsEmailDupRes>>
     suspend fun postSurvey(body: BaseQuestionReq): Flow<Resource<Unit>>
-    suspend fun getTodayList(query: String): Flow<Resource<TodayListRes>>
-    suspend fun getRecomList(query: RecomListReq): Flow<Resource<List<RecomListRes>>>
-    suspend fun getTodayString(workoutId: Long): Flow<Resource<StringListRes>>
+    suspend fun getTodayList(token: String, query: String): Flow<Resource<TodayListRes>>
+    suspend fun getRecomList(token: String, query: RecomListReq): Flow<Resource<List<RecomListRes>>>
+    suspend fun getTodayString(token: String, workoutId: Long): Flow<Resource<StringListRes>>
 }
