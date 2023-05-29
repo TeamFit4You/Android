@@ -1,6 +1,7 @@
 package com.example.fit4you_android.ui.view.recommend
 
 import android.content.Intent
+import android.os.Bundle
 import androidx.activity.viewModels
 import com.example.fit4you_android.ui.view.MainActivity
 import com.example.fit4you_android.R
@@ -14,6 +15,8 @@ class RecommendActivity : BaseActivity<ActivityRecommendBinding, RecommendViewMo
         get() = R.layout.activity_recommend
     override val viewModel: RecommendViewModel by viewModels()
 
+    private val email = intent.getStringExtra("email")
+
     override fun initBeforeBinding() {
 
     }
@@ -24,15 +27,12 @@ class RecommendActivity : BaseActivity<ActivityRecommendBinding, RecommendViewMo
 
     override fun initView() {
         val listFrag = RecommendListFragment()
+        val bundle = Bundle()
+        bundle.putString("email", email)
+        listFrag.arguments = bundle
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.recom_frag, listFrag)
             .commit()
-
-//        binding.btnRecomPrev.setOnClickListener {
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
     }
 }
