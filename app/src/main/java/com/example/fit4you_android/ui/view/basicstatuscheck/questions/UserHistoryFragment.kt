@@ -39,11 +39,14 @@ class UserHistoryFragment : BaseFragment<FragmentUserHistoryBinding, BaseBasicQu
         }
 
         binding.cbChuck.setOnCheckedChangeListener { _, isChecked ->
-            updateDiag("척추협착증", isChecked)
+            updateDiag("척추관협착증", isChecked)
         }
 
-        binding.cbTunnel.setOnCheckedChangeListener { _, isChecked ->
-            updateDiag("터널증후군", isChecked)
+        binding.cbGolf.setOnCheckedChangeListener { _, isChecked ->
+            updateDiag("골프엘보우", isChecked)
+        }
+        binding.cbKnee.setOnCheckedChangeListener { _, isChecked ->
+            updateDiag("무릎질병", isChecked)
         }
     }
 
