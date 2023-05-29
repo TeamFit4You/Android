@@ -1,8 +1,7 @@
 package com.example.fit4you_android.ui.view.today
 
-import android.content.Intent
+import android.os.Bundle
 import androidx.activity.viewModels
-import com.example.fit4you_android.ui.view.MainActivity
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.ActivityTodayBinding
 import com.example.fit4you_android.ui.base.BaseActivity
@@ -23,16 +22,14 @@ class TodayActivity : BaseActivity<ActivityTodayBinding, TodayViewModel>() {
     }
 
     override fun initView() {
+        val email = intent.getStringExtra("email")
         val listFrag = TodayListFragment()
+        val bundle = Bundle()
+        bundle.putString("email", email)
+        listFrag.arguments = bundle
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.today_frag, listFrag)
             .commit()
-
-//        binding.btnTodayPrev.setOnClickListener {
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
     }
 }

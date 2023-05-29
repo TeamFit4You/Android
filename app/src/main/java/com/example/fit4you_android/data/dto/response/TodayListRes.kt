@@ -1,0 +1,5 @@
+package com.example.fit4you_android.data.dto.response
+
+data class TodayListRes(
+    val workouts: List<Long>
+)

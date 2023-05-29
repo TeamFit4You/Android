@@ -1,13 +1,11 @@
 package com.example.fit4you_android.data.remote.user
 
+import android.util.Log
 import com.example.fit4you_android.data.Resource
 import com.example.fit4you_android.data.api.UserService
-import com.example.fit4you_android.data.dto.request.BaseQuestionReq
+import com.example.fit4you_android.data.dto.request.*
 import com.example.fit4you_android.data.error.ErrorManager
 import com.example.fit4you_android.data.error.NO_INTERNET_CONNECTION
-import com.example.fit4you_android.data.dto.request.IsEmailDupReq
-import com.example.fit4you_android.data.dto.request.IsNicknameDupReq
-import com.example.fit4you_android.data.dto.request.SignUpReq
 import com.example.fit4you_android.data.dto.response.*
 import com.example.fit4you_android.network.NetworkConnectivity
 import com.google.gson.Gson
@@ -71,12 +69,70 @@ class UserRemoteData @Inject constructor(
         }
     }
 
-    override fun postSurvey(body: BaseQuestionReq): Resource<BaseQuestionRes> {
+    override fun postSurvey(body: BaseQuestionReq): Resource<Unit> {
         if (!networkConnectivity.isConnected()) {
             return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
         }
         return try {
             val response = userService.postSurvey(baseQuesionReq = body).execute()
+            Log.d("remoteData_res","$response")
+            if (response.isSuccessful) {
+                val successResponse = response.body()
+                Resource.Success(successResponse!!)
+            } else {
+                val errorResponse =
+                    Gson().fromJson(response.errorBody()?.charStream(), ErrorRes::class.java)
+                Resource.Error(errorResponse.toString())
+            }
+        } catch (e: IOException) {
+            Resource.Error(e.message)
+        }
+    }
+
+    override fun getTodayList(query: String): Resource<TodayListRes> {
+        if (!networkConnectivity.isConnected()) {
+            return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
+        }
+        return try {
+            val response = userService.getTodayList(query).execute()
+            if (response.isSuccessful) {
+                val successResponse = response.body()
+                Resource.Success(successResponse!!)
+            } else {
+                val errorResponse =
+                    Gson().fromJson(response.errorBody()?.charStream(), ErrorRes::class.java)
+                Resource.Error(errorResponse.toString())
+            }
+        } catch (e: IOException) {
+            Resource.Error(e.message)
+        }
+    }
+
+    override fun getRecomList(query: RecomListReq): Resource<List<RecomListRes>> {
+        if (!networkConnectivity.isConnected()) {
+            return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
+        }
+        return try {
+            val response = userService.getRecomList(query.email, query.part).execute()
+            if (response.isSuccessful) {
+                val successResponse = response.body()
+                Resource.Success(successResponse!!)
+            } else {
+                val errorResponse =
+                    Gson().fromJson(response.errorBody()?.charStream(), ErrorRes::class.java)
+                Resource.Error(errorResponse.toString())
+            }
+        } catch (e: IOException) {
+            Resource.Error(e.message)
+        }
+    }
+
+    override fun getTodayString(workoutId: Long): Resource<StringListRes> {
+        if (!networkConnectivity.isConnected()) {
+            return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
+        }
+        return try {
+            val response = userService.getStringList(workoutId).execute()
             if (response.isSuccessful) {
                 val successResponse = response.body()
                 Resource.Success(successResponse!!)

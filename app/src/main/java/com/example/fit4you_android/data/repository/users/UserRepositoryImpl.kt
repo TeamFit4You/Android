@@ -1,14 +1,8 @@
 package com.example.fit4you_android.data.repository.users
 
 import com.example.fit4you_android.data.Resource
-import com.example.fit4you_android.data.dto.request.BaseQuestionReq
-import com.example.fit4you_android.data.dto.request.IsEmailDupReq
-import com.example.fit4you_android.data.dto.request.IsNicknameDupReq
-import com.example.fit4you_android.data.dto.request.SignUpReq
-import com.example.fit4you_android.data.dto.response.BaseQuestionRes
-import com.example.fit4you_android.data.dto.response.IsEmailDupRes
-import com.example.fit4you_android.data.dto.response.IsNicknameDupRes
-import com.example.fit4you_android.data.dto.response.SignUpRes
+import com.example.fit4you_android.data.dto.request.*
+import com.example.fit4you_android.data.dto.response.*
 import com.example.fit4you_android.data.remote.user.UserRemoteData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -38,9 +32,27 @@ class UserRepositoryImpl @Inject constructor(
         }.flowOn(ioDispatcher)
     }
 
-    override suspend fun postSurvey(body: BaseQuestionReq): Flow<Resource<BaseQuestionRes>>{
+    override suspend fun postSurvey(body: BaseQuestionReq): Flow<Resource<Unit>>{
         return flow{
             emit(remoteData.postSurvey(body = body))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun getTodayList(query: String): Flow<Resource<TodayListRes>> {
+        return flow<Resource<TodayListRes>> {
+            emit(remoteData.getTodayList(query))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun getRecomList(query: RecomListReq): Flow<Resource<List<RecomListRes>>> {
+        return flow<Resource<List<RecomListRes>>> {
+            emit(remoteData.getRecomList(query))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun getTodayString(workoutId: Long): Flow<Resource<StringListRes>> {
+        return flow<Resource<StringListRes>> {
+            emit(remoteData.getTodayString(workoutId))
         }.flowOn(ioDispatcher)
     }
 }

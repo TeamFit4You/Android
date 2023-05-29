@@ -1,16 +1,13 @@
 package com.example.fit4you_android.data.api
 
-import com.example.fit4you_android.data.dto.request.BaseQuestionReq
-import com.example.fit4you_android.data.dto.request.IsEmailDupReq
-import com.example.fit4you_android.data.dto.request.IsNicknameDupReq
-import com.example.fit4you_android.data.dto.request.SignUpReq
-import com.example.fit4you_android.data.dto.response.BaseQuestionRes
-import com.example.fit4you_android.data.dto.response.IsEmailDupRes
-import com.example.fit4you_android.data.dto.response.IsNicknameDupRes
-import com.example.fit4you_android.data.dto.response.SignUpRes
+import com.example.fit4you_android.data.dto.request.*
+import com.example.fit4you_android.data.dto.response.*
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
+import retrofit2.http.Query as Query
 
 interface UserService {
     @POST("/members/sign-up")
@@ -23,5 +20,17 @@ interface UserService {
     fun postIsNicknameDup(@Body nickname: IsNicknameDupReq): Call<IsNicknameDupRes>
 
     @POST("/members/survey")
-    fun postSurvey(@Body baseQuesionReq: BaseQuestionReq): Call<BaseQuestionRes>
+    fun postSurvey(@Body baseQuesionReq: BaseQuestionReq): Call<Unit>
+
+    @GET("/trainings/recommend")
+    fun getTodayList(@Query("email") email: String): Call<TodayListRes>
+
+    @GET("/workouts/info/{workoutId}")
+    fun getStringList(@Path("workoutId") workoutId: Long): Call<StringListRes>
+
+    @GET("/exercises")
+    fun getRecomList(
+        @Query("email") email: String,
+        @Query("part") part: String
+    ): Call<List<RecomListRes>>
 }
