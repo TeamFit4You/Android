@@ -4,9 +4,10 @@ import android.content.Intent
 import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.lifecycleScope
+import com.example.fit4you_android.Fit4YouApp
 import com.example.fit4you_android.R
 import com.example.fit4you_android.data.Resource
-import com.example.fit4you_android.data.dto.response.StringListRes
 import com.example.fit4you_android.data.dto.response.TodayListRes
 import com.example.fit4you_android.data.model.TodayList
 import com.example.fit4you_android.databinding.FragmentTodayListBinding
@@ -17,6 +18,7 @@ import com.example.fit4you_android.ui.view.today.start.ExampleActivity
 import com.example.fit4you_android.util.*
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
 @AndroidEntryPoint
@@ -26,6 +28,8 @@ class TodayListFragment : BaseFragment<FragmentTodayListBinding, TodayListViewMo
     override val layoutResourceId: Int
         get() = R.layout.fragment_today_list
     private lateinit var adapter: TodayListAdapter
+
+    private lateinit var lists: List<Long>
 
     override fun initBeforeBinding() {
         binding.lifecycleOwner = this
@@ -37,9 +41,11 @@ class TodayListFragment : BaseFragment<FragmentTodayListBinding, TodayListViewMo
 
     override fun initView() {
         val email = arguments?.getString("email")
+        val token = Fit4YouApp.prefs.getString("accessToken", "")
         if (email != null) {
-            viewModel.getTodayList(email = email)
+            viewModel.getTodayList(token, email)
         }
+
     }
 
     private fun observeViewModel() {
@@ -53,6 +59,7 @@ class TodayListFragment : BaseFragment<FragmentTodayListBinding, TodayListViewMo
 
     private fun handleTodayResult(status: Resource<TodayListRes>) {
         Log.d("ResponseData", "$status")
+        val token = Fit4YouApp.prefs.getString("accessToken", "")
         when (status) {
             is Resource.Loading -> {
                 binding.lottieToday.toVisible()
@@ -61,41 +68,28 @@ class TodayListFragment : BaseFragment<FragmentTodayListBinding, TodayListViewMo
             is Resource.Success -> status.data.let {
                 binding.lottieToday.pauseAnimation()
                 binding.lottieToday.toGone()
-                val list = status.data.workouts
-                Log.d("TodayListFrag_LongList","$list")
-                list.forEach { item ->
-                    viewModel.getTodayString(item) // id를 통해 각 항목의 상세 데이터를 불러옴
-                    observe(viewModel.stringList, ::handleStringList)
+                lists = status.data.workoutIds
+                Log.d("TodayListFrag_LongList", "$lists")
+
+                lifecycleScope.launch {
+                    val mappedList = lists.map { id ->
+                        when (val response = viewModel.getTodayString(token, id)) {
+                            is Resource.Loading -> null
+                            is Resource.Success -> {
+                                // handle success
+                                TodayList(response.data.diseaseName)
+                            }
+                            is Resource.Error -> {
+                                // handle error
+                                Log.d("handleMenuResult", "실패!")
+                                viewModel.showToastMessage(response.message)
+                                null
+                            }
+                        }
+                    }.filterNotNull()
+
+                    bindRVTodayListData(mappedList)
                 }
-//                bindRVTodayListData(status.data.workouts)
-            }
-            is Resource.Error -> {
-                Log.d("handleMenuResult", "실패!")
-                binding.lottieToday.pauseAnimation()
-                binding.lottieToday.toGone()
-                viewModel.showToastMessage(status.message)
-            }
-        }
-    }
-
-    private fun handleStringList(status: Resource<StringListRes>) {
-        Log.d("String_Res", "$status")
-        when(status){
-            is Resource.Loading -> {
-                binding.lottieToday.toVisible()
-                binding.lottieToday.playAnimation()
-            }
-            is Resource.Success-> status.data.let {
-                binding.lottieToday.pauseAnimation()
-                binding.lottieToday.toGone()
-
-                // keypoint
-                val todayList = it.part.map { string ->
-                    TodayList(string.toString()) // 여기서 TodayList는 적절한 생성자를 제공해야 합니다.
-                }
-                Log.d("TodayListFrag_StringList","$todayList")
-
-                bindRVTodayListData(todayList)
             }
             is Resource.Error -> {
                 Log.d("handleMenuResult", "실패!")

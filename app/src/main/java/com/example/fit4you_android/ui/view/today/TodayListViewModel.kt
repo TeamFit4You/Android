@@ -10,6 +10,7 @@ import com.example.fit4you_android.data.repository.users.UserRepository
 import com.example.fit4you_android.ui.base.BaseViewModel
 import com.example.fit4you_android.util.SingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -36,22 +37,17 @@ class TodayListViewModel @Inject constructor(private val userRepository: UserRep
 
     }
 
-    fun getTodayList(email: String) {
+    fun getTodayList(token: String, email: String) {
         viewModelScope.launch {
             _todayList.value = Resource.Loading()
-            userRepository.getTodayList(query = email).collect {
+            userRepository.getTodayList(token, email).collect {
                 _todayList.value = it
             }
         }
     }
 
-    fun getTodayString(workoutId: Long){
-        viewModelScope.launch {
-            _stringList.value = Resource.Loading()
-            userRepository.getTodayString(workoutId).collect{
-                _stringList.value = it
-            }
-        }
+    suspend fun getTodayString(token: String, workoutId: Long): Resource<StringListRes>{
+        return userRepository.getTodayString(token, workoutId).single()
     }
 
     fun showToastMessage(errorCode: Int) {
