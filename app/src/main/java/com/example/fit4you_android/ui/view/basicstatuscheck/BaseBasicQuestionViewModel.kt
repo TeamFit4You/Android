@@ -26,19 +26,19 @@ class BaseBasicQuestionViewModel @Inject constructor(private val userRepository:
     val showToast: LiveData<SingleEvent<Any>>
         get() = _showToast
 
-    private val _survey = MutableLiveData<Resource<BaseQuestionRes>>()
-    val survey: LiveData<Resource<BaseQuestionRes>>
+    private val _survey = MutableLiveData<Resource<Unit>>()
+    val survey: LiveData<Resource<Unit>>
         get() = _survey
 
     val baseQuestionReq: MutableLiveData<BaseQuestionReq> = MutableLiveData(
         BaseQuestionReq(
             email="",
-            neck = 0,
-            shoulder = 0,
-            lumbar = 0,
-            wrist = 0,
-            elbow = 0,
-            knee = 0,
+            neck = 0F,
+            shoulder = 0F,
+            lumbar = 0F,
+            wrist = 0F,
+            elbow = 0F,
+            knee = 0F,
             hist = emptyList()
         )
     )
@@ -69,7 +69,7 @@ class BaseBasicQuestionViewModel @Inject constructor(private val userRepository:
         baseQuestionReq.value?.email = email
     }
 
-    fun postQuestion(email: String,hist:List<String>,vas1: Int,vas2: Int,vas3: Int,vas4: Int,vas5: Int,vas6: Int) {
+    fun postQuestion(email: String,hist:List<String>,vas1: Float,vas2: Float,vas3: Float,vas4: Float,vas5: Float,vas6: Float) {
         viewModelScope.launch {
             _survey.value = Resource.Loading()
             userRepository.postSurvey(BaseQuestionReq(email,vas1,vas2,vas3,vas4,vas5,vas6,hist)).collect {
@@ -78,27 +78,27 @@ class BaseBasicQuestionViewModel @Inject constructor(private val userRepository:
         }
     }
 
-    fun updateVas1(vas1: Int) {
+    fun updateVas1(vas1: Float) {
         baseQuestionReq.value?.neck = vas1
     }
 
-    fun updateVas2(vas2: Int) {
+    fun updateVas2(vas2: Float) {
         baseQuestionReq.value?.shoulder = vas2
     }
 
-    fun updateVas3(vas3: Int) {
+    fun updateVas3(vas3: Float) {
         baseQuestionReq.value?.lumbar = vas3
     }
 
-    fun updateVas4(vas4: Int) {
+    fun updateVas4(vas4: Float) {
         baseQuestionReq.value?.wrist = vas4
     }
 
-    fun updateVas5(vas5: Int) {
+    fun updateVas5(vas5: Float) {
         baseQuestionReq.value?.elbow = vas5
     }
 
-    fun updateVas6(vas6: Int) {
+    fun updateVas6(vas6: Float) {
         baseQuestionReq.value?.knee = vas6
     }
 }

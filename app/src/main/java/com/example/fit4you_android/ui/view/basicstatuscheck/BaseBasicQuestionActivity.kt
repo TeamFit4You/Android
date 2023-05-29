@@ -54,7 +54,9 @@ class BaseBasicQuestionActivity :
     override fun initView() {
         val email = intent.getStringExtra("email")
         Log.d("email", "$email")
-        viewModel.setEmail(email!!)
+        if (email != null) {
+            viewModel.setEmail(email)
+        }
         val physicalFrag = PhysicalFragment()
         val historyFrag = UserHistoryFragment()
         val painFrag = UserPainFragment()
@@ -122,8 +124,8 @@ class BaseBasicQuestionActivity :
         binding.root.showToast(this, event, Snackbar.LENGTH_LONG)
     }
 
-    private fun handleSurveyResult(status: Resource<BaseQuestionRes>) {
-        Log.d("status","$status")
+    private fun handleSurveyResult(status: Resource<Unit>) {
+        Log.d("status", "$status")
         when (status) {
             is Resource.Loading -> {
                 binding.lottieQuestion.toVisible()
@@ -133,6 +135,7 @@ class BaseBasicQuestionActivity :
                 binding.lottieQuestion.pauseAnimation()
                 binding.lottieQuestion.toGone()
                 val intent = Intent(this, MainActivity::class.java)
+                intent.putExtra("email", viewModel.baseQuestionReq.value?.email)
                 startActivity(intent)
                 finish()
             }

@@ -2,11 +2,11 @@ package com.example.fit4you_android.data.dto.request
 
 data class BaseQuestionReq(
     var email: String,
-    var neck: Int,
-    var shoulder: Int,
-    var lumbar: Int,
-    var wrist: Int,
-    var elbow: Int,
-    var knee: Int,
+    var neck: Float,
+    var shoulder: Float,
+    var lumbar: Float,
+    var wrist: Float,
+    var elbow: Float,
+    var knee: Float,
     var hist: List<String>
 )
