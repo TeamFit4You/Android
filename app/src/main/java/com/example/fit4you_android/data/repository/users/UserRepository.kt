@@ -4,6 +4,7 @@ import com.example.fit4you_android.data.Resource
 import com.example.fit4you_android.data.dto.request.*
 import com.example.fit4you_android.data.dto.response.*
 import kotlinx.coroutines.flow.Flow
+import okhttp3.ResponseBody
 import retrofit2.http.Query
 
 interface UserRepository {
@@ -14,4 +15,6 @@ interface UserRepository {
     suspend fun getTodayList(token: String, query: String): Flow<Resource<TodayListRes>>
     suspend fun getRecomList(token: String, query: RecomListReq): Flow<Resource<List<RecomListRes>>>
     suspend fun getTodayString(token: String, workoutId: Long): Flow<Resource<StringListRes>>
+    suspend fun getTodayVideo(token: String, workoutId: Long): Flow<Resource<ResponseBody>>
+    suspend fun getRecomVideo(token: String, exerciseId: Long): Flow<Resource<ResponseBody>>
 }

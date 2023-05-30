@@ -7,6 +7,7 @@ import com.example.fit4you_android.data.remote.user.UserRemoteData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import okhttp3.ResponseBody
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
@@ -53,6 +54,18 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun getTodayString(token: String, workoutId: Long): Flow<Resource<StringListRes>> {
         return flow<Resource<StringListRes>> {
             emit(remoteData.getTodayString(token, workoutId))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun getTodayVideo(token: String, workoutId: Long): Flow<Resource<ResponseBody>> {
+        return flow {
+            emit(remoteData.getTodayVideo(token, workoutId))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun getRecomVideo(token: String, exerciseId: Long): Flow<Resource<ResponseBody>> {
+        return flow{
+            emit(remoteData.getRecomVideo(token, exerciseId))
         }.flowOn(ioDispatcher)
     }
 }

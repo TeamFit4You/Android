@@ -2,6 +2,7 @@ package com.example.fit4you_android.data.api
 
 import com.example.fit4you_android.data.dto.request.*
 import com.example.fit4you_android.data.dto.response.*
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -34,13 +35,13 @@ interface UserService {
         @Header("authorization") accessToken: String,
         @Path("workoutId") workoutId: Long,
         @Query("file") file: String
-    ):Call<TodayEstiRes>
+    ): Call<TodayEstiRes>
 
-//    @GET("/workouts/video/{workoutId}")
-//    fun getTodayVideo(
-//        @Header("authorization") accessToken: String,
-//        @Path("workoutId") workoutId: Long
-//    ): Call<>
+    @GET("/workouts/video/{workoutId}")
+    fun getTodayVideo(
+        @Header("authorization") accessToken: String,
+        @Path("workoutId") workoutId: Long
+    ): Call<ResponseBody>
 
     @GET("/workouts/info/{workoutId}")
     fun getStringList(
@@ -54,4 +55,10 @@ interface UserService {
         @Query("email") email: String,
         @Query("part") part: String
     ): Call<List<RecomListRes>>
+
+    @GET("/exercises/video/{exerciseId}/stream")
+    fun getRecomVideo(
+        @Header("authorization") accessToken: String,
+        @Path("exerciseId") exerciseId: Long
+    ): Call<ResponseBody>
 }

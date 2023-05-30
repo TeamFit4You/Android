@@ -77,7 +77,7 @@ class TodayListFragment : BaseFragment<FragmentTodayListBinding, TodayListViewMo
                             is Resource.Loading -> null
                             is Resource.Success -> {
                                 // handle success
-                                TodayList(id, response.data.diseaseName)
+                                TodayList(id, response.data.diseaseName, response.data.detail)
                             }
                             is Resource.Error -> {
                                 // handle error
@@ -104,6 +104,7 @@ class TodayListFragment : BaseFragment<FragmentTodayListBinding, TodayListViewMo
         val intent = Intent(requireActivity(), ExampleActivity::class.java)
         intent.putExtra("key", item.bodyPart)
         intent.putExtra("workoutId", item.id)
+        intent.putExtra("detail", item.detail)
         startActivity(intent)
     }
 

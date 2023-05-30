@@ -9,6 +9,7 @@ import com.example.fit4you_android.data.error.NO_INTERNET_CONNECTION
 import com.example.fit4you_android.data.dto.response.*
 import com.example.fit4you_android.network.NetworkConnectivity
 import com.google.gson.Gson
+import okhttp3.ResponseBody
 import java.io.IOException
 import javax.inject.Inject
 
@@ -75,7 +76,7 @@ class UserRemoteData @Inject constructor(
         }
         return try {
             val response = userService.postSurvey(baseQuesionReq = body).execute()
-            Log.d("remoteData_res","$response")
+            Log.d("remoteData_res", "$response")
             if (response.isSuccessful) {
                 val successResponse = response.body()
                 Resource.Success(successResponse!!)
@@ -133,6 +134,44 @@ class UserRemoteData @Inject constructor(
         }
         return try {
             val response = userService.getStringList(token, workoutId).execute()
+            if (response.isSuccessful) {
+                val successResponse = response.body()
+                Resource.Success(successResponse!!)
+            } else {
+                val errorResponse =
+                    Gson().fromJson(response.errorBody()?.charStream(), ErrorRes::class.java)
+                Resource.Error(errorResponse.toString())
+            }
+        } catch (e: IOException) {
+            Resource.Error(e.message)
+        }
+    }
+
+    override fun getTodayVideo(token: String, workoutId: Long): Resource<ResponseBody> {
+        if (!networkConnectivity.isConnected()) {
+            return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
+        }
+        return try {
+            val response = userService.getTodayVideo(token, workoutId).execute()
+            if (response.isSuccessful) {
+                val successResponse = response.body()
+                Resource.Success(successResponse!!)
+            } else {
+                val errorResponse =
+                    Gson().fromJson(response.errorBody()?.charStream(), ErrorRes::class.java)
+                Resource.Error(errorResponse.toString())
+            }
+        } catch (e: IOException) {
+            Resource.Error(e.message)
+        }
+    }
+
+    override fun getRecomVideo(token: String, exerciseId: Long): Resource<ResponseBody> {
+        if (!networkConnectivity.isConnected()) {
+            return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
+        }
+        return try {
+            val response = userService.getRecomVideo(token, exerciseId).execute()
             if (response.isSuccessful) {
                 val successResponse = response.body()
                 Resource.Success(successResponse!!)
