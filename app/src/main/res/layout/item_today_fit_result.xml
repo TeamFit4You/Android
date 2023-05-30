@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="result"
             type="com.example.fit4you_android.data.model.FitResult" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/round_corner_recom"
         android:elevation="5dp">
@@ -19,26 +22,201 @@
             android:id="@+id/tv_result_setN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{result.setN, default=@string/result_setN"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:text="@{result.setN, default=@string/result_setN}"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_result_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{result.stringtotalAC, default=90.4}"
             android:textSize="15sp"
             android:textStyle="bold"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toEndOf="@+id/tv_result_setN"
+            app:layout_constraintTop_toTopOf="@id/tv_result_setN"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_result_setN"/>
 
         <TextView
-            android:id="@+id/tv_result_FB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{result.feedBack, default=@string/result_feedBack"
-            android:textSize="13sp"
-            android:layout_marginTop="10dp"
+            android:text="%"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/tv_result_total"
+            app:layout_constraintTop_toTopOf="@+id/tv_result_total"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_result_total"/>
+
+        <TextView
+            android:id="@+id/tv_result_count1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="15dp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_result_setN"
+            android:text="@{result.stringcountOne, default=1}"
+            android:textSize="13sp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_feed1"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_feed1"/>
+
+        <TextView
+            android:id="@+id/tv_num1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@id/tv_result_count1"
+            app:layout_constraintTop_toTopOf="@+id/tv_feed1"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_feed1"/>
+
+        <TextView
+            android:id="@+id/tv_count1_acc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@{result.stringaccOne, default=80.6}"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@id/tv_num1"
+            app:layout_constraintTop_toTopOf="@+id/tv_feed1"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_feed1"/>
+
+        <TextView
+            android:id="@+id/tv_per1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/tv_count1_acc"
+            app:layout_constraintTop_toTopOf="@+id/tv_feed1"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_feed1"/>
+
+        <TextView
+            android:id="@+id/tv_feed1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{result.feedOne, default=@string/result_feedOne}"
+            android:textSize="13sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintStart_toEndOf="@id/tv_per1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_result_total"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <TextView
+            android:id="@+id/tv_result_count2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@{result.stringcountTwo, default=2}"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_feed2"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_feed2"/>
+
+        <TextView
+            android:id="@+id/tv_num2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_result_count2"
+            app:layout_constraintTop_toTopOf="@+id/tv_feed2"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_feed2"/>
+
+        <TextView
+            android:id="@+id/tv_count2_acc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@{result.stringaccTwo, default=80.6}"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_num2"
+            app:layout_constraintTop_toTopOf="@+id/tv_feed2"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_feed2"/>
+
+        <TextView
+            android:id="@+id/tv_per2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_count2_acc"
+            app:layout_constraintTop_toTopOf="@+id/tv_feed2"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_feed2"/>
+
+        <TextView
+            android:id="@+id/tv_feed2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{result.feedTwo, default=@string/result_feedTwo}"
+            android:textSize="13sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintStart_toEndOf="@+id/tv_per2"
+            app:layout_constraintTop_toBottomOf="@id/tv_feed1"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_result_count3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@{result.stringcountThr, default=3}"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_feed3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_feed3"/>
+
+        <TextView
+            android:id="@+id/tv_num3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_feed3"
+            app:layout_constraintStart_toEndOf="@+id/tv_result_count3"
+            app:layout_constraintTop_toTopOf="@+id/tv_feed3" />
+
+        <TextView
+            android:id="@+id/tv_count3_acc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@{result.stringaccThr, default=80.6}"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_feed3"
+            app:layout_constraintStart_toEndOf="@+id/tv_num3"
+            app:layout_constraintTop_toTopOf="@+id/tv_feed3" />
+
+        <TextView
+            android:id="@+id/tv_per3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_count3_acc"
+            app:layout_constraintTop_toTopOf="@+id/tv_feed3"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_feed3"/>
+
+        <TextView
+            android:id="@+id/tv_feed3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{result.feedThr, default=@string/result_feedThr}"
+            android:textSize="13sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintStart_toEndOf="@+id/tv_per3"
+            app:layout_constraintTop_toBottomOf="@id/tv_feed2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -57,14 +57,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_id" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/btn_do_login"
             android:layout_width="0dp"
             android:layout_height="58dp"
             android:layout_marginStart="38dp"
             android:layout_marginTop="27dp"
             android:layout_marginEnd="38dp"
-            android:background="@drawable/round_corner_do_login"
+            android:backgroundTint="@color/main"
             android:text="@string/btn_do_login"
             android:textColor="@color/white"
             android:textSize="21sp"
@@ -131,21 +131,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_separate" />
 
-        <FrameLayout
-            android:id="@+id/pb_login_loader_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="true"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_login"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
             android:visibility="gone"
-            tools:layout_editor_absoluteX="23dp"
-            tools:layout_editor_absoluteY="190dp"
-            tools:visibility="visible">
-
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:indeterminate="true" />
-        </FrameLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="fitforyou.json"
+            app:lottie_loop="true"
+            app:lottie_speed="2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

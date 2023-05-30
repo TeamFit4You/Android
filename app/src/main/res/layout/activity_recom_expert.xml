@@ -52,30 +52,30 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <VideoView
-            android:id="@+id/vv_today_ex"
+            android:id="@+id/vv_expert_ex"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/seek_bar_today"
+            app:layout_constraintBottom_toTopOf="@+id/seek_bar_expert"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tb_experttitle" />
 
         <androidx.appcompat.widget.AppCompatSeekBar
-            android:id="@+id/seek_bar_today"
+            android:id="@+id/seek_bar_expert"
             android:layout_width="match_parent"
             android:layout_height="15dp"
             android:max="100"
             android:progress="0"
-            app:layout_constraintBottom_toTopOf="@id/layout_today_control"
+            app:layout_constraintBottom_toTopOf="@id/layout_expert_control"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
-            android:id="@+id/layout_today_control"
+            android:id="@+id/layout_expert_control"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginBottom="10dp"
@@ -86,13 +86,13 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_today_play"
+                android:id="@+id/btn_expert_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Play" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_today_pause"
+                android:id="@+id/btn_expert_pause"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pause" />
@@ -112,37 +112,48 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <ScrollView
             android:id="@+id/rv_expert_notice"
             android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/expert_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tv_notice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:text="@string/today_notice"
+                android:textSize="15sp"
+                tools:ignore="TextViewEdits" />
+        </ScrollView>
+
+        <View
+            android:id="@+id/expert_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <!--        <View-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginBottom="10dp"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintBottom_toTopOf="@+id/btn_exam_prev"/>-->
-
-<!--        <androidx.appcompat.widget.AppCompatButton-->
-<!--            android:id="@+id/btn_expert_prev"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="40dp"-->
-<!--            android:layout_marginBottom="20dp"-->
-<!--            android:background="@drawable/round_corner_do_login"-->
-<!--            android:text="@string/prev"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="15sp"-->
-<!--            android:textStyle="bold"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent" />-->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_expert_video"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="fitforyou.json"
+            app:lottie_loop="true"
+            app:lottie_speed="2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

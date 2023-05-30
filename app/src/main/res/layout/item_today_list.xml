@@ -20,7 +20,7 @@
             android:id="@+id/list_part"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@{bodypart.bodyPart, default=@string/today_list_ex5}"
+            android:text="@string/today_list_ex5"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/black"

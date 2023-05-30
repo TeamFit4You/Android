@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fit4you_android.data.model.FitResult
 import com.example.fit4you_android.databinding.ItemTodayFitResultBinding
-import com.example.fit4you_android.ui.adapter.holder.ResultListViewHolder
 import com.example.fit4you_android.ui.view.today.start.ResultActivity
 import com.example.fit4you_android.ui.view.today.start.ResultViewModel
 
@@ -13,7 +12,16 @@ class ResultListAdapter(
     private val context: ResultActivity,
     private val recommendListViewModel: ResultViewModel,
     private val lists: List<FitResult>
-): RecyclerView.Adapter<ResultListViewHolder>() {
+) : RecyclerView.Adapter<ResultListAdapter.ResultListViewHolder>() {
+
+    inner class ResultListViewHolder(
+        private val binding: ItemTodayFitResultBinding,
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: FitResult) {
+            binding.result = item
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultListViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -22,8 +30,6 @@ class ResultListAdapter(
     }
 
     override fun onBindViewHolder(holder: ResultListViewHolder, position: Int) {
-        holder.binding.tvResultSetN.text = lists[position].setN
-        holder.binding.tvResultFB.text = lists[position].feedBack
         holder.bind(lists[position])
     }
 

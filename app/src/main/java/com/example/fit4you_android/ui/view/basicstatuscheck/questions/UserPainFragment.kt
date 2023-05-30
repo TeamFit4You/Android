@@ -1,20 +1,15 @@
 package com.example.fit4you_android.ui.view.basicstatuscheck.questions
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.example.fit4you_android.R
 import com.example.fit4you_android.databinding.FragmentUserPainBinding
 import com.example.fit4you_android.ui.base.BaseFragment
-import com.example.fit4you_android.ui.view.basicstatuscheck.posetest.RomExFragment
+import com.example.fit4you_android.ui.view.basicstatuscheck.BaseBasicQuestionViewModel
 
-class UserPainFragment : BaseFragment<FragmentUserPainBinding, UserPainViewModel>() {
+class UserPainFragment : BaseFragment<FragmentUserPainBinding, BaseBasicQuestionViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_user_pain
-    override val viewModel: UserPainViewModel by viewModels()
+    override val viewModel: BaseBasicQuestionViewModel by activityViewModels()
 
     override fun initBeforeBinding() {
 

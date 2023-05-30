@@ -103,11 +103,11 @@
     <string name="pain_part2_1">어깨 - 회전근개 파열</string>
     <string name="pain_part3">허리</string>
     <string name="pain_part3_1">허리 - 허리디스크</string>
-    <string name="pain_part3_2">허리 - 척추관 협착증</string>
+    <string name="pain_part3_2">허리 - 척추관협착증</string>
     <string name="pain_part4">손목</string>
-    <string name="pain_part4_1">손목 - 손목터널증후군</string>
+    <string name="pain_part4_1">팔꿈치 - 골프엘보우</string>
     <string name="pain_part5">팔꿈치</string>
-    <string name="pain_part5_1">테니스 엘보</string>
+    <string name="pain_part5_1">무릎 - 무릎질병</string>
     <string name="pain_part5_2">골프 엘보</string>
     <string name="pain_part6">발목</string>
     <string name="pain_part6_1">발목염좌</string>
@@ -171,7 +171,16 @@
 
     <!-- Result Activity & Fragment -->
     <string name="result_setN">1세트</string>
-    <string name="result_feedBack">동해물과백두산이마르고닳도록\n하느님이보우하사니맘대로하세\n스쿼드에서 가쟝 중요한것은엉덩이를 나줬다가 일어나는 동작에서\nasdflasdfasfasdfasdf</string>
+    <string name="result_totalAC">90</string>
+    <string name="result_countOne">1</string>
+    <string name="result_countTwo">2</string>
+    <string name="result_countThr">3</string>
+    <string name="result_accOne">50.23</string>
+    <string name="result_accTwo">70.3</string>
+    <string name="result_accThr">20.5</string>
+    <string name="result_feedOne">one - asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf</string>
+    <string name="result_feedTwo">two - asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf</string>
+    <string name="result_feedThr">three - asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf</string>
 
     <!-- Today Activity & Fragment -->
     <string name="today_list_ex1">목</string>
@@ -185,6 +194,7 @@
     <string name="today_self_set2">2세트</string>
     <string name="today_self_set3">3세트</string>
     <string name="today_timer">5</string>
+    <string name="today_notice_fit">1.동작 수행이 어렵다면 벽에 붙어서 진행해도 좋습니다.\n2.허리가 굽어지지 않도록 복부에 힘을 주어 자세를 유지합니다.\n3.어깨와 골반이 지면과 수직이 되도록 유지합니다.\n4.목은 너무 뻣뻣하게 세우지 않고 편안하게 유지합니다.\n5.팔과 다리를 순차적으로 펴 줍니다.</string>
 
     <!-- Start Package -->
     <string name="exam_title"> 운동하기</string>

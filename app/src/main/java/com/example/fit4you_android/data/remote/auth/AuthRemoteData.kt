@@ -6,9 +6,11 @@ import com.example.fit4you_android.data.error.ErrorManager
 import com.example.fit4you_android.data.error.NO_INTERNET_CONNECTION
 import com.example.fit4you_android.data.dto.request.RefreshTokenReq
 import com.example.fit4you_android.data.dto.request.SignInReq
+import com.example.fit4you_android.data.dto.response.ErrorRes
 import com.example.fit4you_android.data.dto.response.RefreshTokenRes
 import com.example.fit4you_android.data.dto.response.SignInRes
 import com.example.fit4you_android.network.NetworkConnectivity
+import com.google.gson.Gson
 import java.io.IOException
 import javax.inject.Inject
 
@@ -29,9 +31,11 @@ class AuthRemoteData @Inject constructor(
         return try {
             val response = authService.postSignIn(signInReq = body).execute()
             if (response.isSuccessful) {
-                Resource.Success(response.body()!!)
+                val successResponse = response.body()
+                Resource.Success(successResponse!!)
             } else {
-                Resource.Error(response.message())
+                val errorResponse = Gson().fromJson(response.errorBody()?.charStream(), ErrorRes::class.java)
+                Resource.Error(errorResponse.toString())
             }
         } catch (e: IOException) {
             Resource.Error(e.message)

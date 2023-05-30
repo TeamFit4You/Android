@@ -5,9 +5,14 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.compose.ui.res.stringArrayResource
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import com.example.fit4you_android.ui.view.MainActivity
 import androidx.lifecycle.Observer
 import com.example.fit4you_android.R
+import com.example.fit4you_android.data.Resource
+import com.example.fit4you_android.data.dto.response.BaseQuestionRes
 import com.example.fit4you_android.databinding.ActivityBaseBasicQuestionBinding
 import com.example.fit4you_android.ui.base.BaseActivity
 import com.example.fit4you_android.ui.view.basicstatuscheck.notice.RomNoticeFragment
@@ -17,6 +22,8 @@ import com.example.fit4you_android.ui.view.basicstatuscheck.posetest.UserRomFrag
 import com.example.fit4you_android.ui.view.basicstatuscheck.posetest.UserVasFragment
 import com.example.fit4you_android.ui.view.basicstatuscheck.questions.UserHistoryFragment
 import com.example.fit4you_android.ui.view.basicstatuscheck.questions.UserPainFragment
+import com.example.fit4you_android.util.*
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,10 +48,15 @@ class BaseBasicQuestionActivity :
     }
 
     override fun initAfterBinding() {
-
+        observeViewModel()
     }
 
     override fun initView() {
+        val email = intent.getStringExtra("email")
+        Log.d("email", "$email")
+        if (email != null) {
+            viewModel.setEmail(email)
+        }
         val physicalFrag = PhysicalFragment()
         val historyFrag = UserHistoryFragment()
         val painFrag = UserPainFragment()
@@ -55,7 +67,6 @@ class BaseBasicQuestionActivity :
 
         val baseVideoUri =
             Uri.parse("android.resource://" + this.packageName + "/")
-        val bundle = Bundle()
 
         supportFragmentManager
             .beginTransaction()
@@ -63,178 +74,115 @@ class BaseBasicQuestionActivity :
             .commit()
 
         binding.btnFragNext.setOnClickListener {
+            Log.d("progress", "${binding.pbBasic.progress}")
             when (binding.pbBasic.progress) {
-                1 -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, painFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(2)
-                }
-                2 -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, historyFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(3)
-                }
-                3 -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, noticeFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(4)
-                }
-                4 -> {
-                    // 첫번째 ROM
-                    viewModel.setVideo(baseVideoUri.toString(), sample_video[0])
-                    bundle.putInt("idx", 0)
-                    bundle.putString("rom_title0",resources.getString(R.string.notice_2_1_1))
-                    viewModel.videoUri.observe(this, Observer {
-                        bundle.putString("file0", it.toString())
-                    })
-                    romExFrag.arguments = bundle
-
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, romExFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(5)
-                }
-                5 -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, userRomFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(6)
-                }
-                6 -> {
-                    // 1번째 VAS 체크
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, vasFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(7)
-                }
-                7 -> {
-                    // 두번째 ROM
-                    viewModel.setVideo(baseVideoUri.toString(), sample_video[1])
-                    bundle.putInt("idx", 1)
-                    bundle.putString("rom_title1",resources.getString(R.string.notice_2_1_2))
-                    viewModel.videoUri.observe(this, Observer {
-                        bundle.putString("file1", it.toString())
-                    })
-                    romExFrag.arguments = bundle
-
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, romExFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(8)
-                }
-                8 -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, userRomFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(9)
-                }
-                9 -> {
-                    // 2번째 VAS 체크
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, vasFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(10)
-                }
-                10 -> {
-                    // 세번째 ROM
-                    viewModel.setVideo(baseVideoUri.toString(), sample_video[2])
-                    bundle.putInt("idx", 2)
-                    bundle.putString("rom_title2",resources.getString(R.string.notice_2_2_1))
-                    viewModel.videoUri.observe(this, Observer {
-                        bundle.putString("file2", it.toString())
-                    })
-                    romExFrag.arguments = bundle
-
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, romExFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(11)
-                }
-                11 -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, userRomFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(12)
-                }
-                12 -> {
-                    // 3번째 VAS 체크
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, vasFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(13)
-                }
-                13 -> {
-                    // 네번째 ROM
-                    viewModel.setVideo(baseVideoUri.toString(), sample_video[3])
-                    bundle.putInt("idx", 3)
-                    bundle.putString("rom_title3",resources.getString(R.string.notice_2_2_2))
-                    viewModel.videoUri.observe(this, Observer {
-                        bundle.putString("file3", it.toString())
-                    })
-                    romExFrag.arguments = bundle
-
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, romExFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(14)
-                }
-                14 -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, userRomFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(15)
-                }
-                15 -> {
-                    // 4번째 VAS 체크
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, vasFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(16)
-                }
-                16 -> {
-                    // 다섯번째 ROM
-                    viewModel.setVideo(baseVideoUri.toString(), sample_video[4])
-                    bundle.putInt("idx", 4)
-                    bundle.putString("rom_title4",resources.getString(R.string.notice_2_3_1))
-                    viewModel.videoUri.observe(this, Observer {
-                        bundle.putString("file4", it.toString())
-                    })
-                    romExFrag.arguments = bundle
-
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, romExFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(17)
-                }
-                17 -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, userRomFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(18)
-                }
-                18 -> {
-                    // 5번째 VAS 체크
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, vasFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(19)
-                }
-                19 -> {
-                    // 여섯번째 ROM
-                    viewModel.setVideo(baseVideoUri.toString(), sample_video[5])
-                    bundle.putInt("idx", 5)
-                    bundle.putString("rom_title5",resources.getString(R.string.notice_2_3_2))
-                    viewModel.videoUri.observe(this, Observer {
-                        bundle.putString("file5", it.toString())
-                    })
-                    romExFrag.arguments = bundle
-
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, romExFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(20)
-                }
-                20 -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, userRomFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(21)
-                }
-                21 -> {
-                    // 5번째 VAS 체크
-                    supportFragmentManager.beginTransaction().replace(R.id.basic_frag, vasFrag)
-                        .commit()
-                    binding.pbBasic.setProgress(22)
-                }
+                1 -> updateFragment(painFrag, 2)
+                2 -> updateFragment(historyFrag, 3)
+                3 -> updateFragment(noticeFrag, 4)
+                // 4, 7, 10, 13, 16, 19
+                in 4..21 step 3 -> updateRomFragment(
+                    (binding.pbBasic.progress - 3) / 3,
+                    romExFrag,
+                    baseVideoUri.toString()
+                )
+                // 5, 8, 11, 14, 17, 20
+                in 5..22 step 3 -> updateFragment(userRomFrag, binding.pbBasic.progress + 1)
+                // 6, 9, 12, 15, 18, 21
+                in 6..22 step 3 -> updateFragment(vasFrag, binding.pbBasic.progress + 1)
                 else -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
+//                    viewModel.setValue()
+                    Log.d("basequesion", viewModel.baseQuestionReq.value.toString())
+                    val emailR = viewModel.baseQuestionReq.value?.email
+                    val hist = viewModel.baseQuestionReq.value?.hist
+                    val vas1 = viewModel.baseQuestionReq.value?.neck
+                    val vas2 = viewModel.baseQuestionReq.value?.shoulder
+                    val vas3 = viewModel.baseQuestionReq.value?.lumbar
+                    val vas4 = viewModel.baseQuestionReq.value?.wrist
+                    val vas5 = viewModel.baseQuestionReq.value?.elbow
+                    val vas6 = viewModel.baseQuestionReq.value?.knee
+                    viewModel.postQuestion(
+                        emailR!!,
+                        hist!!,
+                        vas2!!,
+                        vas3!!,
+                        vas4!!,
+                        vas5!!,
+                        vas6!!,
+                        vas1!!
+                    )
                 }
             }
+        }
+    }
+
+    private fun observeViewModel() {
+        observe(viewModel.survey, ::handleSurveyResult)
+        observeToast(viewModel.showToast)
+    }
+
+    private fun observeToast(event: LiveData<SingleEvent<Any>>) {
+        binding.root.showToast(this, event, Snackbar.LENGTH_LONG)
+    }
+
+    private fun handleSurveyResult(status: Resource<Unit>) {
+        Log.d("status", "$status")
+        when (status) {
+            is Resource.Loading -> {
+                binding.lottieQuestion.toVisible()
+                binding.lottieQuestion.playAnimation()
+            }
+            is Resource.Success -> status.data.let {
+                binding.lottieQuestion.pauseAnimation()
+                binding.lottieQuestion.toGone()
+                val intent = Intent(this, MainActivity::class.java)
+                intent.putExtra("email", viewModel.baseQuestionReq.value?.email)
+                startActivity(intent)
+                finish()
+            }
+            is Resource.Error -> {
+                binding.lottieQuestion.pauseAnimation()
+                binding.lottieQuestion.toGone()
+                viewModel.showToastMessage(status.message)
+            }
+        }
+    }
+
+    private fun updateFragment(frag: Fragment, progress: Int) {
+        val bundle = Bundle()
+        bundle.putInt("progress", progress)
+        frag.arguments = bundle
+        supportFragmentManager.beginTransaction().replace(R.id.basic_frag, frag).commit()
+        binding.pbBasic.setProgress(progress)
+    }
+
+    private fun updateRomFragment(
+        index: Int,
+        romExFrag: Fragment,
+        baseVideoUri: String
+    ) {
+        val title = arrayListOf(
+            resources.getString(R.string.notice_2_1_1),
+            resources.getString(R.string.notice_2_1_2),
+            resources.getString(R.string.notice_2_2_1),
+            resources.getString(R.string.notice_2_2_2),
+            resources.getString(R.string.notice_2_3_1),
+            resources.getString(R.string.notice_2_3_2),
+        )
+        val bundle = Bundle()
+        viewModel.setVideo(baseVideoUri, sample_video[index])
+        bundle.putInt("idx", index)
+        bundle.putString("rom_title$index", title[index])
+        viewModel.videoUri.observe(this, Observer {
+            bundle.putString("file$index", it.toString())
+        })
+        romExFrag.arguments = bundle
+        Log.d("idx", "$index")
+        if (index == 0) {
+            supportFragmentManager.beginTransaction().replace(R.id.basic_frag, romExFrag).commit()
+            binding.pbBasic.setProgress(5)
+        } else {
+            supportFragmentManager.beginTransaction().replace(R.id.basic_frag, romExFrag).commit()
+            binding.pbBasic.setProgress(index * 3 + 5)
         }
     }
 }

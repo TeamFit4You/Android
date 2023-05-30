@@ -157,10 +157,18 @@
                         android:textSize="20sp" />
 
                     <CheckBox
-                        android:id="@+id/cb_tunnel"
+                        android:id="@+id/cb_golf"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/pain_part4_1"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/cb_knee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pain_part5_1"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
                 </LinearLayout>
