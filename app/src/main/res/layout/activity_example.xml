@@ -123,17 +123,6 @@
                 tools:ignore="TextViewEdits" />
         </ScrollView>
 
-        <!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/rv_today_notice"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:layout_marginStart="20dp"-->
-<!--            android:layout_marginEnd="20dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/btn_exam_next"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent" />-->
-
         <View
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

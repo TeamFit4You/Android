@@ -15,5 +15,5 @@ interface UserRemoteDataSource {
     fun getRecomList(token: String, query: RecomListReq): Resource<List<RecomListRes>>
     fun getTodayString(token: String, workoutId: Long): Resource<StringListRes>
     fun getTodayVideo(token: String, workoutId: Long): Resource<ResponseBody>
-    fun getRecomVideo(token: String, exerciseId: Long): Resource<ResponseBody>
+    fun getExpertVideo(token: String, exerciseId: Long): Resource<ResponseBody>
 }

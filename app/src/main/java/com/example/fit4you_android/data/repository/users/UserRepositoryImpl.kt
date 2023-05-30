@@ -63,9 +63,9 @@ class UserRepositoryImpl @Inject constructor(
         }.flowOn(ioDispatcher)
     }
 
-    override suspend fun getRecomVideo(token: String, exerciseId: Long): Flow<Resource<ResponseBody>> {
+    override suspend fun getExpertVideo(token: String, exerciseId: Long): Flow<Resource<ResponseBody>> {
         return flow{
-            emit(remoteData.getRecomVideo(token, exerciseId))
+            emit(remoteData.getExpertVideo(token, exerciseId))
         }.flowOn(ioDispatcher)
     }
 }

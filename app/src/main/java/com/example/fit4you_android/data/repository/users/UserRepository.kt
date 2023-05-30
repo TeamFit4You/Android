@@ -16,5 +16,5 @@ interface UserRepository {
     suspend fun getRecomList(token: String, query: RecomListReq): Flow<Resource<List<RecomListRes>>>
     suspend fun getTodayString(token: String, workoutId: Long): Flow<Resource<StringListRes>>
     suspend fun getTodayVideo(token: String, workoutId: Long): Flow<Resource<ResponseBody>>
-    suspend fun getRecomVideo(token: String, exerciseId: Long): Flow<Resource<ResponseBody>>
+    suspend fun getExpertVideo(token: String, exerciseId: Long): Flow<Resource<ResponseBody>>
 }

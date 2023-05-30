@@ -166,12 +166,12 @@ class UserRemoteData @Inject constructor(
         }
     }
 
-    override fun getRecomVideo(token: String, exerciseId: Long): Resource<ResponseBody> {
+    override fun getExpertVideo(token: String, exerciseId: Long): Resource<ResponseBody> {
         if (!networkConnectivity.isConnected()) {
             return Resource.Error(errorManager.getError(NO_INTERNET_CONNECTION).description)
         }
         return try {
-            val response = userService.getRecomVideo(token, exerciseId).execute()
+            val response = userService.getExpertVideo(token, exerciseId).execute()
             if (response.isSuccessful) {
                 val successResponse = response.body()
                 Resource.Success(successResponse!!)

@@ -71,7 +71,7 @@ class RecommendListFragment : BaseFragment<FragmentRecommendListBinding, Recomme
                 binding.lottieToday.pauseAnimation()
                 binding.lottieToday.toGone()
 
-                val recomList = it.map { res -> RecommendData(res.diseaseName) }
+                val recomList = it.map { res -> RecommendData(res.exerciseId, res.diseaseName, res.detail) }
                 bindRVTodayListData(recomList)
             }
             is Resource.Error -> {
@@ -86,6 +86,8 @@ class RecommendListFragment : BaseFragment<FragmentRecommendListBinding, Recomme
     override fun onRecomItemClick(item: RecommendData) {
         val intent = Intent(requireActivity(), RecomInfoActivity::class.java)
         intent.putExtra("key", item.bodyPart)
+        intent.putExtra("exerciseId", item.id)
+        intent.putExtra("detail", item.detail)
         startActivity(intent)
     }
 

@@ -57,7 +57,7 @@ interface UserService {
     ): Call<List<RecomListRes>>
 
     @GET("/exercises/video/{exerciseId}/stream")
-    fun getRecomVideo(
+    fun getExpertVideo(
         @Header("authorization") accessToken: String,
         @Path("exerciseId") exerciseId: Long
     ): Call<ResponseBody>
