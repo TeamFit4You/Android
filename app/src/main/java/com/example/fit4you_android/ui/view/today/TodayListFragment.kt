@@ -77,7 +77,7 @@ class TodayListFragment : BaseFragment<FragmentTodayListBinding, TodayListViewMo
                             is Resource.Loading -> null
                             is Resource.Success -> {
                                 // handle success
-                                TodayList(response.data.diseaseName)
+                                TodayList(id, response.data.diseaseName)
                             }
                             is Resource.Error -> {
                                 // handle error
@@ -103,6 +103,7 @@ class TodayListFragment : BaseFragment<FragmentTodayListBinding, TodayListViewMo
     override fun onTodayItemClick(item: TodayList) {
         val intent = Intent(requireActivity(), ExampleActivity::class.java)
         intent.putExtra("key", item.bodyPart)
+        intent.putExtra("workoutId", item.id)
         startActivity(intent)
     }
 
